@@ -33,6 +33,14 @@
 
 // console.log (resultado2);
 
-var respuestaUsuario = prompt ("¿Cual es tu nombre?");
-alert ("Hola " + respuestaUsuario);
-console.log ("Hola " + respuestaUsuario);
+var actual= 2021;
+
+var nombre = prompt ("¿Cual es tu nombre?");
+var respuesta = "Hola " + nombre;
+var edad = parseInt (prompt ("Año de nacimiento"));
+var respuesta2 = nombre + " tiene " + (actual - edad) + " años";
+
+alert (respuesta);
+console.log (respuesta);
+alert (respuesta2);
+console.log (respuesta2);
