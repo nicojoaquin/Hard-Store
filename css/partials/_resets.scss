@@ -7,7 +7,10 @@ html {
   min: height 100vh;
 }
 body {
-  background-color: $colorPrincipal;
+  background: #141e30;
+  background: -webkit-linear-gradient(to right, #243b55, #141e30);
+  background: linear-gradient(to right, #243b55, #141e30);
+
   font-family: $font;
   color: white;
 }
