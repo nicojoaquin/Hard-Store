@@ -1,9 +1,9 @@
 let actual = 2021;
-// const edadMayor = 18;
+const edadMayor = 18;
 
 let nombre = prompt ("¿Cual es tu nombre?");
 let respuesta = "Hola " + nombre;
-// console.log (respuesta);
+console.log (respuesta);
 
 let edad = parseInt (prompt ("Año de nacimiento"));
 let respuesta2 = nombre + " tiene " + (actual - edad) + " años";
