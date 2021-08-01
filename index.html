@@ -4,21 +4,132 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CDKeyGames</title>
+    <title>HardStore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/css/main.css" />
     <script src="main.js"></script>
   </head>
 
   <body>
-    <header>
-      <div class="titulo">
-        <h1 class="titulo__h1">CDKeyGames</h1>
-        <img src="./assets/images/logo.ico" alt="titulo__logo" height="60px" />
-      </div>
-    </header>
-
-    <main></main>
-
-    <footer></footer>
+    <div class="category">
+      <header>
+        <div class="titulo">
+          <h1 class="titulo__h1">Hard-Store</h1>
+          <img
+            src="./assets/images/logo.ico"
+            alt="titulo__logo"
+            height="60px"
+          />
+        </div>
+      </header>
+      <hr />
+      <main>
+        <h2>Productos</h2>
+        <div class="store">
+          <div class="store__category">
+            <a href="#" class="store__category--item active" category="all"
+              >Todos los productos</a
+            >
+            <a href="#" class="store__category--item" category="desktop"
+              >Computadoras</a
+            >
+            <a href="#" class="store__category--item" category="notebooks"
+              >Notebooks</a
+            >
+            <a href="#" class="store__category--item" category="monitors"
+              >Monitores</a
+            >
+            <a href="#" class="store__category--item" category="headsets"
+              >Auriculares</a
+            >
+          </div>
+          <div class="store__products">
+            <div class="store__products--item" category="desktop">
+              <img
+                src="./assets/images/msi.jpg"
+                width="300"
+                height="275"
+                alt="msi"
+              />
+              <a href="#">PC de escritorio MSI</a>
+            </div>
+            <div class="store__products--item" category="desktop">
+              <img
+                src="./assets/images/asus.jpg"
+                width="300"
+                height="275"
+                alt="asus"
+              />
+              <a href="#">PC de escritorio Asus ROG</a>
+            </div>
+            <div class="store__products--item" category="notebooks">
+              <img
+                src="./assets/images/hp.jpg"
+                width="300"
+                height="275"
+                alt="hp"
+              />
+              <a href="#">Notebook HP Omen</a>
+            </div>
+            <div class="store__products--item" category="notebooks">
+              <img
+                src="./assets/images/alienware.jpg"
+                width="300"
+                height="275"
+                alt="alienware"
+              />
+              <a href="#">Notebook Alienware</a>
+            </div>
+            <div class="store__products--item" category="monitors">
+              <img
+                src="./assets/images/samsung.jpg"
+                width="300"
+                height="275"
+                alt="samsung"
+              />
+              <a href="#">Monitor Samsung</a>
+            </div>
+            <div class="store__products--item" category="monitors">
+              <img
+                src="./assets/images/viewsonic.jpg"
+                width="300"
+                height="275"
+                alt="viewsonic"
+              />
+              <a href="#">Monitor Viewsonic 144hz</a>
+            </div>
+            <div class="store__products--item" category="headsets">
+              <img
+                src="./assets/images/razer.jpg"
+                width="300"
+                height="275"
+                alt="razer"
+              />
+              <a href="#">Headset Razer</a>
+            </div>
+            <div class="store__products--item" category="headsets">
+              <img
+                src="./assets/images/hyperx.jpg"
+                width="300"
+                height="275"
+                alt="hyperx"
+              />
+              <a href="#">Headset Hyperx</a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
   </body>
 </html>
