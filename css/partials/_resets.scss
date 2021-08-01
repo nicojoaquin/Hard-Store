@@ -6,3 +6,8 @@
 html {
   min: height 100vh;
 }
+body {
+  background-color: $colorPrincipal;
+  font-family: $font;
+  color: white;
+}
