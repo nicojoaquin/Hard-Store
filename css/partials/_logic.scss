@@ -1,6 +1,6 @@
 $font: "Open Sans", sans-serif;
-$colorTitulo: rgb(180, 157, 24);
-$fontTitulo: "Mukta", sans-serif;
+$colorTitulo: rgb(87, 123, 201);
+$fontTitulo: "Oswald", sans-serif;
 
 @mixin titulos($colorTitulo, $font) {
   color: $colorTitulo;
