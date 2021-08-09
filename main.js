@@ -1,22 +1,45 @@
-let actual = 2021;
-const edadMayor = 18;
+ //Función de validación
+ 
+ let actual = 2021;
+ const edadMayor = 18;
+ let nombre = prompt ("¿Cual es tu nombre?");
+ let edad = parseInt (prompt ("Año de nacimiento"));
+ let respuesta3 = parseInt((actual - edad));
 
-let nombre = prompt ("¿Cual es tu nombre?");
-let respuesta = "Hola " + nombre;
-console.log (respuesta);
-
-let edad = parseInt (prompt ("Año de nacimiento"));
-let respuesta2 = nombre + " tiene " + (actual - edad) + " años";
-let respuesta3 = parseInt((actual - edad));
-console.log (respuesta2);
-if(respuesta3 > edadMayor){
-    alert("Bienvenido " + nombre + "!");
-    console.log("Bienvenido " + nombre + "!");
-} else if(respuesta3 == edadMayor){
-    alert("Accedes con lo justo!");
-    console.log("Accedes con lo justo!");
-} else {
-    alert("Para acceder a este contenido tenes que ser mayor de edad");
-    console.log("Para acceder a este contenido tenes que ser mayor de edad");
+ function edadAcceso() {
+ if (respuesta3 > edadMayor) {
+ return "Bienvenido " + nombre + "!";
+ }
+ else {
+ return "Tienes que ser mayor de edad para acceder";
 }
+ }
+alert(edadAcceso());
 
+
+//Función de calculadora
+if(respuesta3 > edadMayor) {
+let a = parseInt(prompt("Primer numero"))
+let operacion =prompt('Ingrese signo de operación: "+", "-", "*", "/"'); 
+let b = parseInt(prompt("Segundo numero"))
+
+const calc = (a, b,) => {
+switch(operacion) {
+case operacion = "+":
+    return a + b;
+
+case operacion = "-":
+    return a - b;
+
+case operacion = "*":
+    return a * b;
+
+case operacion = "/":
+    return a / b;
+
+default: 
+   alert("Ingrese una operacion valida");
+}
+}
+console.log(calc(a, b));
+}

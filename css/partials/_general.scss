@@ -17,13 +17,23 @@ a {
 .titulo a {
   max-width: 140px;
 }
-.titulo h1 {
+.titulo__h1 {
   text-transform: uppercase;
   font-size: 30px;
   @include titulos($colorTitulo, $fontTitulo);
+  z-index: 0;
 }
-.titulo h1:hover {
-  color: rgb(75, 77, 173);
+.titulo__h1::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: 0.3s;
+}
+.titulo__h1:hover::after {
+  width: 100%;
+  transition: 0.3s;
 }
 .category {
   max-width: 1100px;
@@ -49,16 +59,23 @@ a {
   justify-content: center;
   gap: 30px;
   margin: 15px;
+  margin-left: 0;
 }
 @media screen and (max-width: 616px) {
+  * {
+    overflow-x: hidden;
+  }
   .store__category {
     flex-wrap: wrap;
     padding: 40px;
     gap: 10px;
     width: 80%;
     position: relative;
-    left: 20px;
-    bottom: 40px;
+    left: 35px;
+    bottom: 20px;
+  }
+  .store__products--item {
+    margin-left: 5%;
   }
 }
 .store__category .store__category--item {
@@ -80,20 +97,19 @@ a {
 .store__category .active:hover {
   background-color: rgba(75, 75, 219, 0.322);
 }
-
 .store__products {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 20px;
 }
-.store__products--item {
+.store__products--item img {
   display: flex;
   flex-direction: column;
-  margin-left: 18px;
-  margin-bottom: 25px;
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.22);
 }
-.store__products--item a {
+.store__products--item p {
   display: block;
   width: 100%;
   background: #aab7b8;
@@ -102,41 +118,54 @@ a {
   font-size: 20px;
   text-align: center;
   border-radius: 0px 0px 20px 20px;
+  transition: 0.6s;
 }
 .store__products--item img {
   border-radius: 20px 20px 0px 0px;
 }
 .store__products--item:hover {
-  transform: scale(1.2);
+  transform: scale(1.1) translatex(5px);
   transition: transform 0.5s;
 }
+
+.store__products--item:hover p {
+  background-color: rgb(90, 20, 220);
+}
 .foot {
-  height: 150px;
+  height: 180px;
   background: rgb(17, 9, 9);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 30px;
   justify-content: center;
   align-items: center;
 }
 .foot p:first-child {
   text-transform: uppercase;
   font-family: font;
+  position: relative;
+  top: 30px;
 }
 .redes {
   display: flex;
-  gap: 50px;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
+  gap: 100px;
   padding: 30px;
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+  width: 600px;
+  justify-content: center;
+  gap: 150px;
 }
-.wpp {
-  display: flex;
-  align-items: center;
-  gap: 7px;
+
+.redes__link {
+  background: rgb(218, 121, 121);
+  padding: 3px;
+  border-radius: 10px;
 }
-.mail {
-  display: flex;
-  align-items: center;
-  gap: 7px;
+.redes__link:first-child {
+  background: green;
+}
+.redes__link:hover {
+  transform: translatey(-3px) scale(1.1);
+  transition: 0.5s;
 }
