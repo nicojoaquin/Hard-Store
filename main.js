@@ -6,11 +6,11 @@
  let answer = parseInt((year - age));
 
  function validate() {
- if (answer > OLD & age > 1920) {
-   return buy();
+  if (answer > OLD & age > 1920) {
+    return buy();
  } 
- else {
- return "Tienes que ser mayor de edad para acceder";
+  else {
+    return "Tienes que ser mayor de edad para acceder";
 }
  }
 
@@ -19,9 +19,9 @@ alert(validate());
 //Función de compra
  function buy() {
   alert("Bienvenido " + name1 + "!");
-  let articles = ["PC", "Notebooks", "Monitores", "Headset"];
+  let articles = ["1: PC", "2: Notebooks", "3: Monitores", "4: Headset"];
   let quote = "Elije un articulo para comprar:"
-  let choose = parseInt(prompt(quote + "\n" + "1: " + articles[0] + ": $100000" + "\n" + "2: " + articles[1] + ": $90000" + "\n" + "3: " + articles[2] + ": $40000" + "\n" + "4: " + articles[3] + ": $10000"));
+  let choose = parseInt(prompt(quote + "\n" + (articles.join( "\n" ))));
 
    switch(choose) {
     case 1:
