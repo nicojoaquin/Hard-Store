@@ -77,6 +77,15 @@ a {
   .store__products--item {
     margin-left: 5%;
   }
+  .footer__section {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .quote {
+    margin-bottom: 15px;
+    margin-right: 50px;
+  }
 }
 .store__category .store__category--item {
   display: flex;
@@ -131,41 +140,42 @@ a {
 .store__products--item:hover p {
   background-color: rgb(90, 20, 220);
 }
-.foot {
-  height: 180px;
-  background: rgb(17, 9, 9);
+.footer__section {
   display: flex;
-  flex-direction: column;
-  gap: 30px;
-  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  background: rgb(14, 13, 13);
   align-items: center;
+  justify-content: space-evenly;
+  height: 150px;
 }
-.foot p:first-child {
-  text-transform: uppercase;
+.quote {
+  font-style: italic;
+  text-decoration-line: underline;
+}
+.contact {
   font-family: font;
-  position: relative;
-  top: 30px;
+  text-transform: uppercase;
 }
 .redes {
   display: flex;
-  gap: 100px;
-  padding: 30px;
-  border-right: 1px solid white;
-  border-left: 1px solid white;
-  width: 600px;
-  justify-content: center;
-  gap: 150px;
+  gap: 50px;
+  align-items: center;
 }
-
 .redes__link {
   background: rgb(218, 121, 121);
-  padding: 3px;
+  width: 40px;
+  padding: 1px;
   border-radius: 10px;
 }
-.redes__link:first-child {
+.redes__link:hover {
+  transform: translatey(-3px) scale(1.06);
+  transition: 0.5s;
+  background: rgb(231, 93, 93);
+}
+#wpp {
   background: green;
 }
-.redes__link:hover {
-  transform: translatey(-3px) scale(1.1);
-  transition: 0.5s;
+#wpp:hover {
+  background: rgb(19, 172, 19);
 }
