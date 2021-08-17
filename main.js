@@ -1,4 +1,4 @@
-//Función de validación
+/*//Función de validación
  let year = 2021;
  const OLD = 18;
  let name1 = prompt ("¿Cual es tu nombre?");
@@ -55,7 +55,7 @@ function buy() {
       alert("Elije una opcion correcta");
    }
   }
-
+*/
   //Función de busqueda
   function finder() {
   const productos = [{  nombre: "MSI", precio: 105000, stock: 8},
