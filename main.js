@@ -1,9 +1,18 @@
 //Articulos
-let elements = [  {nombre: "PC", precio: 105000, stock: 8},
-                  {nombre: "Notebook", precio: 90000, stock: 4},
-                  {nombre: "Monitor", precio: 40000, stock: 15},
-                  {nombre: "Headset", precio: 12000, stock: 11}];   
-console.log(elements);               
+class Article{
+  constructor(nombre, precio, stock) {
+  this.nombre = nombre;
+  this.precio = precio;
+  this.stock = stock;
+  }
+}
+const asus = new Article("PC Asus", 155000, 5);
+const HP = new Article("Notebook HP", 83500, 13);
+const viewsonic = new Article("Monitor Viewsonic", 44000, 15);
+const hyperx = new Article("Headset Hyperx" , 11000, 31);
+let elements = [asus, HP, viewsonic, hyperx];   
+console.log(elements); 
+
 //Función de validación
 let year = 2021;
 const OLD = 18;
@@ -47,31 +56,29 @@ function buy () {
   }
   switch(choose) {
     case 1:
-      COST("$105000");
-      reduce("PC", 0)
+      COST("$155000");
+      reduce("PC Asus", 0)
       return SURE(0);
       
     case 2:
-      COST("$92000");
-      reduce("Notebook", 1)
+      COST("$83500");
+      reduce("Notebook HP", 1)
       return SURE(1);
       
     case 3:
       COST("$44000");
-      reduce("Monitor", 2)
+      reduce("Monitor Viewsonic", 2)
       return SURE(2);
       
     case 4:
       COST("$11000");
-      reduce("Headset", 3)
+      reduce("Headset Hyperx", 3)
       return SURE(3);
       
     default:
       alert("Elije una opcion correcta");
    }
 }
-
-
 
 //Función de busqueda
 function finder() {
@@ -88,21 +95,8 @@ function finder() {
 finder()
 
 //Constructor
-class Article{
-  constructor(nombre, precio, stock) {
-  this.nombre = nombre;
-  this.precio = precio;
-  this.stock = stock;
-  }
-}
-const asus = new Article("Asus", 155000, 5);
-const HP = new Article("HP", 83500, 13);
-const viewsonic = new Article("Viewsonic", 44000, 15);
-const hyperx = new Article("Hyperx" , 11000, 31);
-console.log(asus);
-console.log(HP);
-console.log(viewsonic);
-console.log(hyperx);
+
+
 
 
  
