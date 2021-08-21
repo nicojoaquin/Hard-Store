@@ -1,14 +1,15 @@
+//Articulos
+let elements = [  {nombre: "PC", precio: 105000, stock: 8},
+                  {nombre: "Notebook", precio: 90000, stock: 4},
+                  {nombre: "Monitor", precio: 40000, stock: 15},
+                  {nombre: "Headset", precio: 12000, stock: 11}];   
+console.log(elements);               
 //Función de validación
 let year = 2021;
 const OLD = 18;
 let name1 = prompt ("¿Cual es tu nombre?");
 let age = parseInt (prompt ("Año de nacimiento"));
 let answer = parseInt((year - age));
-let elements = [  {nombre: "PC", precio: 105000, stock: 8},
-                  {nombre: "Notebook", precio: 90000, stock: 4},
-                  {nombre: "Monitor", precio: 40000, stock: 15},
-                  {nombre: "Headset", precio: 12000, stock: 11}];
-                  
 const VALIDATE = () => {
   if (answer >= OLD & age > 1920) {
     return buy();
@@ -41,8 +42,7 @@ function buy () {
   let choose = parseInt(prompt(quote + "\n" + articles.join("\n")));
   const reduce = (product, el) => {
     if (elements[el].nombre == product & conf == 1) {
-      elements[el].stock -= 1;     
-      console.log(elements);      
+      elements[el].stock -= 1;           
     }
   }
   switch(choose) {
@@ -70,6 +70,8 @@ function buy () {
       alert("Elije una opcion correcta");
    }
 }
+
+
 
 //Función de busqueda
 function finder() {
