@@ -39,33 +39,31 @@ function buy () {
   let articles = ["1: PC", "2: Notebook", "3: Monitor", "4: Headset"];
   let quote = "Elije un articulo para comprar:"
   let choose = parseInt(prompt(quote + "\n" + articles.join("\n")));
-  const reduce = (product) => {
-    for (let i = 0; i < elements.length; i++) {
-    if (elements[i].nombre == product & conf ==1) {
-      elements[i].stock -= 1;           
+  const reduce = (product, el) => {
+    if (elements[el].nombre == product & conf == 1) {
+      elements[el].stock -= 1;     
+      console.log(elements);      
     }
-  }
-    console.log(elements);
   }
   switch(choose) {
     case 1:
       COST("$105000");
-      reduce("PC")
+      reduce("PC", 0)
       return SURE(0);
       
     case 2:
       COST("$92000");
-      reduce("Notebook")
+      reduce("Notebook", 1)
       return SURE(1);
       
     case 3:
       COST("$44000");
-      reduce("Monitor")
+      reduce("Monitor", 2)
       return SURE(2);
       
     case 4:
       COST("$11000");
-      reduce("Headset")
+      reduce("Headset", 3)
       return SURE(3);
       
     default:
