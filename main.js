@@ -6,10 +6,10 @@ class Article{
   this.stock = stock;
   }
 }
-const asus = new Article("PC Asus", 155000, 5);
-const HP = new Article("Notebook HP", 83500, 13);
-const viewsonic = new Article("Monitor Viewsonic", 44000, 15);
-const hyperx = new Article("Headset Hyperx" , 11000, 31);
+let asus = new Article("PC Asus", 155000, 5);
+let HP = new Article("Notebook HP", 83500, 13);
+let viewsonic = new Article("Monitor Viewsonic", 44000, 15);
+let hyperx = new Article("Headset Hyperx" , 11000, 31);
 let elements = [asus, HP, viewsonic, hyperx];   
 console.log(elements); 
 
@@ -32,47 +32,47 @@ alert(VALIDATE());
 //Función de compra
 function buy () {
   alert(`Bienvenido ${name1}!`);
+  let articles = ["1: PC Asus", "2: Notebook HP", "3: Monitor Viewsonic", "4: Headset Hyperx"];
+  let quote = "Elije un articulo para comprar:";
+  let choose = parseInt(prompt(quote + "\n" + articles.join("\n")));
   const COST = (price) => {
     conf = parseInt(prompt("Costo: " + price + "\nDesea comprar?\n1-Si\n2-No"));
   }
   const SURE = (a) => {
     if(conf == 1) {
-      return `Gracias por comprar el articulo ${articles[a].slice(1)}`; 
+      return `Gracias por comprar el articulo: ${elements[a].nombre}`; 
       }
     else if (conf == 2) {
       return "Siga navegando";
       }
     else  {
-      return"Elija una opción correcta"
+      return"Elija una opción correcta";
       }
      }
-  let articles = ["1: PC", "2: Notebook", "3: Monitor", "4: Headset"];
-  let quote = "Elije un articulo para comprar:"
-  let choose = parseInt(prompt(quote + "\n" + articles.join("\n")));
-  const reduce = (product, el) => {
-    if (elements[el].nombre == product & conf == 1) {
+  const reduce = (el) => {
+    if (conf == 1) {
       elements[el].stock -= 1;           
     }
   }
   switch(choose) {
     case 1:
       COST("$155000");
-      reduce("PC Asus", 0)
+      reduce(0);
       return SURE(0);
       
     case 2:
       COST("$83500");
-      reduce("Notebook HP", 1)
+      reduce(1);
       return SURE(1);
       
     case 3:
       COST("$44000");
-      reduce("Monitor Viewsonic", 2)
+      reduce(2);
       return SURE(2);
       
     case 4:
       COST("$11000");
-      reduce("Headset Hyperx", 3)
+      reduce(3);
       return SURE(3);
       
     default:
@@ -82,19 +82,36 @@ function buy () {
 
 //Función de busqueda
 function finder() {
-  const productos = [{  nombre: "MSI", precio: 105000, stock: 8},
-                    {   nombre: "Alienware", precio: 90000, stock: 4},
-                    {   nombre: "Razer", precio: 9000, stock: 15}];
-  const buscarNombre = productos.find(product => product.nombre === "MSI");
-    console.log(buscarNombre);
-  const productosBaratos = productos.filter(product => product.precio < 100000);
-    console.log(productosBaratos);
-  const aumentoStock = productos.map(product => product.stock += 10);
-    console.log(aumentoStock);
+  const productos = [{  nombre: "MSI".toUpperCase(), precio: 105000, stock: 8},
+                    {   nombre: "Alienware".toUpperCase(), precio: 90000, stock: 4},
+                    {   nombre: "Razer".toUpperCase(), precio: 9000, stock: 15}];
+  const condicionDeBusqueda = (entrada, resultado) => {
+    if (entrada != undefined) {
+      console.log(resultado);
+    }
+    else {
+      console.log("No se encuentra");
   }
-finder()
+}
+  let finder = prompt("Ingrese el nombre del producto");
+  const buscarNombre = productos.find(product => product.nombre === finder.toUpperCase());
+  condicionDeBusqueda(finder, buscarNombre);
 
-//Constructor
+  let filter = parseInt(prompt("Ingrese el precio a filtrar (menor)"));
+  const productosBaratos = productos.filter(product => product.precio < filter);
+  condicionDeBusqueda(filter, productosBaratos);
+
+  let aumento = parseInt(prompt("Aumentar stock"));
+  const aumentoStock = productos.map(product => product.stock += aumento);
+  condicionDeBusqueda(aumento, aumentoStock);
+}
+  finder();
+
+  
+  
+
+
+
 
 
 
