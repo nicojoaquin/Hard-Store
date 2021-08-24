@@ -25,6 +25,10 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
     <link rel="stylesheet" href="css/main.css" />
   </head>
 
@@ -38,30 +42,47 @@
           height="60px"
           width="70px"
         />
+        <div class="nav__btn">
+          <div id="nav__hamburger" class="nav_hamburger">
+            <i class="uil uil-bars"></i>
+          </div>
+        </div>
       </div>
     </header>
     <hr />
-    <main>
-      <div class="category">
-        <h2>Productos</h2>
-        <div class="store">
-          <div class="store__category">
-            <a href="#" class="store__category--item active" category="all"
-              >Todos los productos</a
-            >
-            <a href="#" class="store__category--item" category="desktop"
-              >Computadoras</a
-            >
-            <a href="#" class="store__category--item" category="notebooks"
-              >Notebooks</a
-            >
-            <a href="#" class="store__category--item" category="monitors"
-              >Monitores</a
-            >
-            <a href="#" class="store__category--item" category="headsets"
-              >Auriculares</a
-            >
-          </div>
+    <main class="container">
+      <div class="store">
+        <nav class="store__category">
+          <h2>Productos</h2>
+          <ul id="nav-menu" class="store__links">
+            <li>
+              <a href="#" class="store__category--item active" category="all"
+                >Todos los productos</a
+              >
+            </li>
+            <li>
+              <a href="#" class="store__category--item" category="desktop"
+                >Computadoras</a
+              >
+            </li>
+            <li>
+              <a href="#" class="store__category--item" category="notebooks"
+                >Notebooks</a
+              >
+            </li>
+            <li>
+              <a href="#" class="store__category--item" category="monitors"
+                >Monitores</a
+              >
+            </li>
+            <li>
+              <a href="#" class="store__category--item" category="headsets"
+                >Auriculares</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="category">
           <div class="store__products">
             <div class="store__products--item" category="desktop">
               <a id="pc" href="#"
@@ -175,6 +196,7 @@
         </div>
       </section>
     </footer>
+    <script src="main2.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
