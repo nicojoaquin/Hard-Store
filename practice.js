@@ -73,7 +73,7 @@ function buy () {
 }
 
 //Función de busqueda
-/*function finder() {
+function finder() {
   const productos = [{  nombre: "MSI".toUpperCase(), precio: 105000, stock: 8},
                     {   nombre: "Alienware".toUpperCase(), precio: 90000, stock: 4},
                     {   nombre: "Razer".toUpperCase(), precio: 9000, stock: 15}];
@@ -97,7 +97,7 @@ function buy () {
   const aumentoStock = productos.map(product => product.stock += aumento);
   condicionDeBusqueda(aumento, aumentoStock);
 }
-  finder();*/
+  finder();
 
   
   
