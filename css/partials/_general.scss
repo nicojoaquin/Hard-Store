@@ -35,7 +35,7 @@
 //Main
 .category {
   max-width: 1100px;
-  width: 90%;
+  width: 98%;
   margin: auto;
 }
 .container h2 {
@@ -118,7 +118,7 @@
   align-items: center;
   margin-bottom: 20px;
   overflow: hidden;
-  padding: 18px;
+  padding: 15px;
 }
 .store__products--item img {
   display: flex;
@@ -190,7 +190,7 @@
 }
 
 //Media Queries
-@media screen and (max-width: 896px) {
+@media screen and (max-width: 900px) {
   * {
     overflow-x: hidden;
   }
