@@ -1,6 +1,6 @@
-// //Variables
 $( document ).ready(function() {
-
+  
+  // //Variables
 let active = document.getElementById('activeClass');
 let item = $('.store__category--item');
 let products = $('.store__products--item');
