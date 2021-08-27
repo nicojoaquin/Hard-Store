@@ -85,14 +85,6 @@
   font-weight: 800;
   border-radius: 10px;
 }
-.store__links.show_menu {
-  right: 0;
-  display: flex;
-  transition: 0.5s;
-  width: 80%;
-  position: absolute;
-  top: 80px;
-}
 .active {
   background-color: blue;
   display: flex;
@@ -106,9 +98,9 @@
 .store__category a:hover {
   background-color: rgba(75, 75, 219, 0.322);
 }
-.store__category--item:focus {
-  background-color: blue;
-}
+// .store__category--item:focus {
+//   background-color: blue;
+// }
 .store__category .active:hover {
   background-color: rgba(75, 75, 219, 0.322);
 }

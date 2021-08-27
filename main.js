@@ -1,7 +1,6 @@
 $( document ).ready(function() {
   
   // //Variables
-let active = document.getElementById('activeClass');
 let item = $('.store__category--item');
 let products = $('.store__products--item');
 let showAll = $('.store__category--item[category="all"]');
@@ -10,14 +9,20 @@ const navMenu = document.getElementById('nav-menu');
 // //Responsive menu 
 $('#nav__hamburger').click(function () {
   $('.store__category').slideToggle();
+  if($('i').attr('class') == 'uil uil-bars'){
+  $('i').removeClass('uil uil-bars').addClass('uil uil-sorting');
+  }
+  else{
+    $('i').removeClass('uil uil-sorting').addClass('uil uil-bars'); 
+  }
 })
 
 // //Change menu
-function links(element, remove){
+  showAll.addClass('active');
   item.click(function(){
-    element.classList.remove(remove);
     let catProduct = $(this).attr('category');
-    console.log(catProduct);
+    item.removeClass('active');
+    $(this).addClass('active');
 
 //     //Ocultar todo
     function hideProduct(){
@@ -38,8 +43,4 @@ function links(element, remove){
       products.css('transform', 'scale(1)');
     } setTimeout(setAll, 100);
     })
-
-}
-links(navMenu, 'show_menu')
-links(active, 'active');
 })
