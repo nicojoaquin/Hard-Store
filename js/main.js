@@ -8,7 +8,12 @@ const navMenu = document.getElementById('nav-menu');
 
 // //Responsive menu 
 $('#nav__hamburger').click(function () {
-  $('.store__category').slideToggle();
+  $('.store__category').slideToggle(); //Se desplaza el menu
+  item.click(function(){
+    $('.store__category').slideUp();
+    $('i').removeClass('uil uil-bars').addClass('uil uil-sorting');
+    $('i').removeClass('uil uil-sorting').addClass('uil uil-bars');
+  })
   if($('i').attr('class') == 'uil uil-bars'){     //Cambiar icono al pulsar
   $('i').removeClass('uil uil-bars').addClass('uil uil-sorting');
   }                                                                     
