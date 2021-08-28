@@ -36,6 +36,9 @@ function evento(article, a, b) {
         console.log(elements[a][b]); //Cuando confirmarmos la compra con "1", se resta el stock
         break;
       }
+      else {
+        break;
+      }
     }   
     if (elements[a][b].stock <1) {
     console.log('No hay mas stock!'); //Si el producto ya no tiene stock, se imprime en la pantalla, y no se puede comprar mas
