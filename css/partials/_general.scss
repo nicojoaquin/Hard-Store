@@ -2,14 +2,15 @@
 .header {
   width: 100%;
   height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  align-content: center;
 }
 .titulo {
   display: flex;
   align-items: center;
   gap: 25px;
-  padding-left: 60px;
-  position: relative;
-  top: 10px;
 }
 .titulo a {
   max-width: 140px;
@@ -56,8 +57,6 @@
 }
 .uil {
   display: none;
-  position: absolute;
-  right: 30px;
   cursor: pointer;
   transition: 1.8s;
 }
@@ -191,22 +190,31 @@
 }
 
 //Media Queries
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 935px) {
   * {
     overflow-x: hidden;
+  }
+  .header {
+    padding: 10px;
+  }
+  .buscador {
+    width: 20%;
+  }
+  .nav__btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .store__category {
     display: none;
   }
   .uil {
-    display: flex;
-    justify-content: space-evenly;
+    display: block;
   }
   .store__links {
     width: 100%;
     height: 100%;
     background: $colorPrincipal;
-    border-radius: 50px 0 0 50px;
     flex-direction: column;
     gap: 20px;
     align-items: center;
