@@ -33,6 +33,25 @@
   width: 100%;
   transition: 0.3s;
 }
+.buscador {
+  display: flex;
+}
+#input {
+  border-radius: 10px 0 0 10px;
+  padding: 10px;
+  width: 70%;
+  height: 30px;
+}
+#boton {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 50px;
+  height: 30px;
+  background-color: white;
+  border-color: white;
+  cursor: pointer;
+  display: block;
+}
 //Main
 .category {
   max-width: 1100px;
@@ -55,7 +74,7 @@
   flex-direction: column;
   gap: 20px;
 }
-.uil {
+.uil-bars {
   display: none;
   cursor: pointer;
   transition: 1.8s;
@@ -195,10 +214,17 @@
     overflow-x: hidden;
   }
   .header {
+    margin-left: 40px;
     padding: 10px;
+    height: 120px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .titulo {
+    overflow: hidden;
   }
   .buscador {
-    width: 20%;
   }
   .nav__btn {
     display: flex;
