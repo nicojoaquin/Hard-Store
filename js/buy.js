@@ -31,7 +31,7 @@ function evento(article, a, b) {
   console.log(elements[a][b]);
   document.getElementById(article).addEventListener('click', () => {
     while (elements[a][b].stock > 0) {
-      let ask = parseInt(prompt(`Precio: ${elements[a][b].precio}\nDesea comprar?\n1: Si`))  //Confirmacion de compra 
+      let ask = parseInt(prompt(`Precio: ${elements[a][b].price}\nDesea comprar?\n1: Si`))  //Confirmacion de compra 
       if (ask === 1) {
         elements[a][b].stock -= 1                                     
         console.log(elements[a][b]); //Cuando confirmarmos la compra con "1", se resta el stock
