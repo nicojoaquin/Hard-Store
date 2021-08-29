@@ -2,12 +2,12 @@
 let form = document.getElementById('finder');
 let input = document.getElementById('input');
 
+
 form.addEventListener('submit', (e) => {  //Busca la palabra escrita en el input
   e.preventDefault();
-  let formulario = e.target;
-  let value = formulario.input.value;
+  let value = input.value
   console.log(value); //Imprime en la consola la palabra escrita 
-});
+})
 
 //Simulacion de compra
 class Article{

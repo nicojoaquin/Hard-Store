@@ -1,25 +1,24 @@
 $( document ).ready(function() {
   
 //Variables
-let item = $('.store__category--item');
-let products = $('.store__products--item');
-let showAll = $('.store__category--item[category="all"]');
-const navMenu = document.getElementById('nav-menu');
+const item = $('.store__category--item');
+const products = $('.store__products--item');
+const showAll = $('.store__category--item[category="all"]');
 
 // //Responsive menu 
 $('#nav__hamburger').click(function () {
   $('.store__category').slideToggle(); //Se desplaza el menu
+  if($('#ham').attr('class') == 'uil uil-bars'){     //Cambiar icono al pulsar
+    $('#ham').removeClass('uil uil-bars').addClass('uil uil-times');
+  } 
+  else {
+    $('#ham').removeClass('uil uil-times').addClass('uil uil-bars');
+  }                                                               
   item.click(function(){
     $('.store__category').slideUp();
-    $('i').removeClass('uil uil-bars').addClass('uil uil-sorting');
-    $('i').removeClass('uil uil-sorting').addClass('uil uil-bars');
+    $('#ham').removeClass('uil uil-bars').addClass('uil uil-times');
+    $('#ham').removeClass('uil uil-times').addClass('uil uil-bars');
   })
-  if($('i').attr('class') == 'uil uil-bars'){     //Cambiar icono al pulsar
-  $('i').removeClass('uil uil-bars').addClass('uil uil-sorting');
-  }                                                                     
-  else{
-    $('i').removeClass('uil uil-sorting').addClass('uil uil-bars'); 
-  }
 })
 
   //Cambiar color de los links
