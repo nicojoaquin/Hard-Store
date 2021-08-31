@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: space-around;
   align-content: center;
+  padding-top: 10px;
   gap: 20px;
 }
 .titulo {
@@ -130,8 +131,16 @@
   box-shadow: 5px 0 10px rgba(0, 0, 0, 0.15);
   overflow: hidden;
 }
+.nav__btn {
+  display: flex;
+  justify-content: center;
+}
 .products {
-  color: black;
+  color: rgb(12, 12, 12);
+  background-color: rgba(252, 246, 246, 0.562);
+  width: 200px;
+  border-radius: 10px;
+  font-weight: bolder;
 }
 .store__links {
   list-style: none;
