@@ -41,12 +41,11 @@ function evento(article, a, b) {
         break;
       }
     }   
-    if (elements[a][b].stock <1) {
-    console.log('No hay mas stock!'); //Si el producto ya no tiene stock, se imprime en la pantalla, y no se puede comprar mas
+    if (elements[a][b].stock = 0) {
+    throw 'No hay mas stock!'; //Si el producto ya no tiene stock, se imprime en la pantalla, y no se puede comprar mas
     }
   })
-}
-    
+} 
 evento('pc', 0, 0);
 evento('pc2', 0, 1);
 evento('notebook', 1, 0);

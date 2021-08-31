@@ -34,30 +34,41 @@
 
   <body>
     <header class="header">
-      <div class="titulo">
-        <a href="index.html"> <h1 class="titulo__h1 link">Hard-Store</h1></a>
-        <img
-          src="./assets/images/logo.ico"
-          alt="titulo__logo"
-          height="60px"
-          width="70px"
-        />
+      <div class="titleAndSearch">
+        <div class="titulo">
+          <a href="index.html"> <h1 class="titulo__h1 link">Hard Store</h1></a>
+          <img
+            src="./assets/images/logo.ico"
+            alt="titulo__logo"
+            height="60px"
+            width="70px"
+          />
+        </div>
+        <form class="buscador" id="finder">
+          <input id="input" placeholder="Buscar..." type="text" />
+          <button id="boton" type="submit">
+            <i class="uil uil-search"></i>
+          </button>
+        </form>
       </div>
-      <form class="buscador" id="finder">
-        <input id="input" placeholder="Buscar..." type="text" />
-        <button id="boton" type="submit"><i class="uil uil-search"></i></button>
-      </form>
+      <div id="car" class="shopCar">
+        <i class="uil uil-shopping-cart"></i>
+      </div>
+      <div id="carScreen" class="car-screen">
+        <i id="times" class="uil uil-times"></i>
+        <h2>Agregue productos aquí...</h2>
+        <hr />
+      </div>
     </header>
-    <hr />
     <main class="container">
       <div class="store">
         <div class="nav__btn">
-          <h2>Productos</h2>
+          <h2 class="products">Productos</h2>
           <div id="nav__hamburger" class="nav_hamburger">
             <i id="ham" class="uil uil-bars"></i>
           </div>
         </div>
-        <nav class="store__category">
+        <nav id="nav" class="store__category">
           <ul id="nav-menu" class="store__links">
             <li>
               <a

@@ -3,19 +3,16 @@
   padding: 0;
   box-sizing: border-box;
 }
-.menu_off {
-  overflow-y: hidden;
-}
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 body {
   background: $colorPrincipal;
-  background: -webkit-linear-gradient(to top, #2c5364, #203a43, #0f2027);
-  background: linear-gradient(to top, #2c5364, #203a43, #0f2027);
+  background-image: url(http://vanimg.s3.amazonaws.com/backgrounds-tuts-23.jpg);
   font-family: $font;
-  min-height: 100vh;
   color: white;
+  min-height: 100vh;
 }
 a {
   text-decoration: none;
