@@ -91,7 +91,7 @@
   padding: 20px;
 }
 .uil-times {
-  color: white;
+  color: #050505;
   cursor: pointer;
 }
 #boton:hover {
@@ -122,10 +122,6 @@
 .uil-bars {
   display: none;
   cursor: pointer;
-  transition: 1.8s;
-}
-.uil-bars:active {
-  transform: scale(5.1);
 }
 .store__category {
   box-shadow: 5px 0 10px rgba(0, 0, 0, 0.15);
@@ -154,14 +150,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #d35400;
+  background: #da4b0a;
   padding: 10px;
   width: 180px;
   font-weight: 800;
   border-radius: 10px;
 }
 .active {
-  background-color: blue;
+  background-color: rgb(20, 20, 150);
 }
 .store__category a:hover {
   background-color: rgba(75, 75, 219, 0.322);

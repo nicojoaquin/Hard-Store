@@ -11,15 +11,15 @@ let carShow = document.getElementById('carScreen')
 $('#nav__hamburger').click(function () {
   $('.store__category').slideToggle(); //Se desplaza el menu
   if($('#ham').attr('class') == 'uil uil-bars'){     //Cambia icono al pulsar el boton
-    $('#ham').removeClass('uil uil-bars').addClass('uil uil-times');
+    $('#ham').removeClass('uil uil-bars').addClass('uil uil-arrow-up');
   } 
   else {
-    $('#ham').removeClass('uil uil-times').addClass('uil uil-bars');
+    $('#ham').removeClass('uil uil-arrow-up').addClass('uil uil-bars');
   }                                                               
   item.click(function(){
     $('.store__category').slideUp();
-    $('#ham').removeClass('uil uil-bars').addClass('uil uil-times'); //Cambia icono y cierra el menu al pulsar el link
-    $('#ham').removeClass('uil uil-times').addClass('uil uil-bars');
+    $('#ham').removeClass('uil uil-bars').addClass('uil uil-arrow-up'); //Cambia icono y cierra el menu al pulsar el link
+    $('#ham').removeClass('uil uil-arrow-up').addClass('uil uil-bars');
   })
 })
 

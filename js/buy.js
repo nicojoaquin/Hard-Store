@@ -1,15 +1,19 @@
+//Variables
+let form = document.querySelector('#finder');
+let input = document.querySelector('#input');
+
+let cartList = [];                                           //Array del carrito, donde almacenamos los productos.
+
+
 //Buscador
-let form = document.getElementById('finder');
-let input = document.getElementById('input');
-
-
-form.addEventListener('submit', (e) => {  //Busca la palabra escrita en el input
+form.addEventListener('submit', (e) => {                     //Busca la palabra escrita en el input.
   e.preventDefault();
-  let value = input.value
-  console.log(value); //Imprime en la consola la palabra escrita 
+  console.log(input.value.toLowerCase());                    //Imprime en la consola la palabra escrita .
+  
+  input.value = ''                                           //Vacia el campo.
 })
 
-//Simulacion de compra
+//Simulacion de compra.
 class Article{
     constructor(id, price, stock) { 
     this.id = id;
@@ -24,28 +28,36 @@ const notebook = [new Article("Notebook HP", `$${174600}`, 6), new Article("Note
 const monitor = [new Article("Monitor Samsung", `$${22300}`, 4), new Article("Monitor Viewsonic", `$${44000}`, 5)];
 const headset = [new Article("Headset Razer" , `$${17500}`, 9), new Article("Headset Hyperx" , `$${11000}`, 8)];
 
-let elements = [desktop, notebook, monitor, headset];  //Listamos los elementos para utilizarlos
+let elements = [desktop, notebook, monitor, headset];  //Listamos los elementos para utilizarlos.
 
-//Funcion que imprime en la consola cada articulo que presionamos
+//Función de compra.
 function evento(article, a, b) {
   console.log(elements[a][b]);
-  document.getElementById(article).addEventListener('click', () => {
+
+  document.getElementById(article).addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    if (elements[a][b].stock == 0) {
+      throw 'No hay mas stock!';        //Si el producto ya no tiene stock, se imprime que no se puede comprar mas.
+    }
+
     while (elements[a][b].stock > 0) {
-      let ask = parseInt(prompt(`Precio: ${elements[a][b].price}\nDesea comprar?\n1: Si`))  //Confirmacion de compra 
+      let ask = parseInt(prompt(`Precio: ${elements[a][b].price}\nDesea agregar al carrito?\n1: Si`)) //Confirmacion de compra.
+      
       if (ask === 1) {
-        elements[a][b].stock -= 1                                     
-        console.log(elements[a][b]); //Cuando confirmarmos la compra con "1", se resta el stock
-        break;
-      }
-      else {
-        break;
+        cartList.push(elements[a][b]);  //Agregamos el producto elegido al array del carrito.
+
+        elements[a][b].stock -= 1       //Al confirmar la compra con "1", se resta el stock. 
+        console.log(cartList)                                          
+          break;
+
+      } else {
+          break;
       }
     }   
-    if (elements[a][b].stock = 0) {
-    throw 'No hay mas stock!'; //Si el producto ya no tiene stock, se imprime en la pantalla, y no se puede comprar mas
-    }
   })
 } 
+
 evento('pc', 0, 0);
 evento('pc2', 0, 1);
 evento('notebook', 1, 0);
