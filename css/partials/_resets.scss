@@ -5,13 +5,12 @@
 }
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 body {
   background-image: url(/assets/images/bg.jpg);
   font-family: $font;
   color: white;
-  min-height: 100vh;
+  max-height: 1100px;
 }
 a {
   text-decoration: none;

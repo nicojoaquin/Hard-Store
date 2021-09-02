@@ -2,7 +2,9 @@
 const form = document.querySelector('#finder'),
       input = document.querySelector('#input');
 const products = document.querySelectorAll('.store__products--item'),
-      counter = document.querySelector('#counter'); 
+      counter = document.querySelector('#counter'),
+      carScreen = document.querySelector('#carScreen');
+
 let cartNumber = 1
 
 //Buscador
@@ -39,6 +41,8 @@ for (let i = 0; i < products.length; i++) {
     e.preventDefault();
 
   if(elements[i].stock > 0){
+    let clone = products[i].cloneNode(true)
+    carScreen.appendChild(clone);
     counter.textContent = cartNumber++    //Sumamos el carrito cuando clickeamos en un producto,
   } else{
       throw 'No hay mas stock!'             //Si no queda stock del producto, la funcion no sigue.
