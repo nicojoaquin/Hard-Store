@@ -1,15 +1,14 @@
 //Variables
-let form = document.querySelector('#finder');
-let input = document.querySelector('#input');
-
-let cartList = [];                                           //Array del carrito, donde almacenamos los productos.
-
+const form = document.querySelector('#finder'),
+      input = document.querySelector('#input');
+const products = document.querySelectorAll('.store__products--item'),
+      counter = document.querySelector('#counter'); 
+let cartNumber = 1
 
 //Buscador
 form.addEventListener('submit', (e) => {                     //Busca la palabra escrita en el input.
   e.preventDefault();
   console.log(input.value.toLowerCase());                    //Imprime en la consola la palabra escrita .
-  
   input.value = ''                                           //Vacia el campo.
 })
 
@@ -23,47 +22,35 @@ class Article{
 }
 
 //Elementos a crear
-const desktop = [new Article('PC MSI', `$${155000}`, 3,), new Article('PC Asus', `$${133200}`, 7)];
-const notebook = [new Article("Notebook HP", `$${174600}`, 6), new Article("Notebook AlienWare", `$${410000}`, 2) ];
-const monitor = [new Article("Monitor Samsung", `$${22300}`, 4), new Article("Monitor Viewsonic", `$${44000}`, 5)];
-const headset = [new Article("Headset Razer" , `$${17500}`, 9), new Article("Headset Hyperx" , `$${11000}`, 8)];
+const msi = new Article('PC MSI', `$${155000}`, 3,);
+const asus =  new Article('PC Asus', `$${133200}`, 7);
+const hp = new Article("Notebook HP", `$${174600}`, 6) 
+const alienWare = new Article("Notebook AlienWare", `$${410000}`, 2) ;
+const samsung = new Article("Monitor Samsung", `$${22300}`, 4) 
+const viewSonic = new Article("Monitor Viewsonic", `$${44000}`, 5);
+const razer = new Article("Headset Razer" , `$${17500}`, 9) 
+const hyperx = new Article("Headset Hyperx" , `$${11000}`, 8);
 
-let elements = [desktop, notebook, monitor, headset];  //Listamos los elementos para utilizarlos.
+let elements = [msi, asus, hp, alienWare, samsung, viewSonic, razer, hyperx];  //Listamos los elementos para utilizarlos.
 
 //Función de compra.
-function evento(article, a, b) {
-  console.log(elements[a][b]);
-
-  document.getElementById(article).addEventListener('click', (e) => {
+for (let i = 0; i < products.length; i++) {
+  products[i].addEventListener('click', (e) => {
     e.preventDefault();
-    
-    if (elements[a][b].stock == 0) {
-      throw 'No hay mas stock!';        //Si el producto ya no tiene stock, se imprime que no se puede comprar mas.
+
+  if(elements[i].stock > 0){
+    counter.textContent = cartNumber++    //Sumamos el carrito cuando clickeamos en un producto,
+  } else{
+      throw 'No hay mas stock!'             //Si no queda stock del producto, la funcion no sigue.
     }
 
-    while (elements[a][b].stock > 0) {
-      let ask = parseInt(prompt(`Precio: ${elements[a][b].price}\nDesea agregar al carrito?\n1: Si`)) //Confirmacion de compra.
-      
-      if (ask === 1) {
-        cartList.push(elements[a][b]);  //Agregamos el producto elegido al array del carrito.
-
-        elements[a][b].stock -= 1       //Al confirmar la compra con "1", se resta el stock. 
-        console.log(cartList)                                          
-          break;
-
-      } else {
-          break;
-      }
-    }   
+    stockSub(elements[i])                   
   })
-} 
+}
 
-evento('pc', 0, 0);
-evento('pc2', 0, 1);
-evento('notebook', 1, 0);
-evento('notebook2', 1, 1);
-evento('monitor', 2, 0);
-evento('monitor2', 2, 1);
-evento('headset', 3, 0);
-evento('headset2', 3, 1);
+////Función que resta el stock del producto.
+const stockSub = (el) => {
+    el.stock -= 1
+    console.log(el)   
+  }
 

@@ -93,6 +93,9 @@
 .uil-times {
   color: #050505;
   cursor: pointer;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 #boton:hover {
   background-color: rgb(243, 236, 236);
@@ -199,6 +202,29 @@
 .store__products--item:hover p {
   background-color: rgb(90, 20, 220);
 }
+.addCart {
+  background-color: violet;
+  margin: auto;
+  position: relative;
+  bottom: 160px;
+  z-index: 10;
+  font-size: 14px;
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+  padding: 10px;
+  cursor: pointer;
+  opacity: 0;
+}
+.store__products--item:hover .addCart {
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+.addCart:hover {
+  background-color: rgb(247, 191, 247);
+}
+
 //Footer
 .footerr {
   position: absolute;
