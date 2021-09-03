@@ -14,7 +14,7 @@
   height: 100%;
   background: #000;
   z-index: 1;
-  transition: 0.3s;
+  transition: 0.4s;
 }
 .sideBar ul {
   display: flex;
@@ -62,7 +62,7 @@
 }
 .newBody {
   margin-left: 290px;
-  transition: 0.4s;
+  transition: 0.5s ease-in-out;
 }
 .titleAndSearch {
   display: flex;
