@@ -4,10 +4,9 @@ $( document ).ready(function() {
 const item = $('.store__category--item');
 const products = $('.store__products--item');
 const showAll = $('.store__category--item[category="all"]');
-let car = document.getElementById('car');
-let carShow = document.getElementById('carScreen')
 
-// //Responsive menu 
+
+//Responsive menu 
 $('#nav__hamburger').click(function () {
   $('.store__category').slideToggle(); //Se desplaza el menu
   if($('#ham').attr('class') == 'uil uil-bars'){     //Cambia icono al pulsar el boton
@@ -23,15 +22,7 @@ $('#nav__hamburger').click(function () {
   })
 })
 
-//Carrito
-car.addEventListener('click', () => {
-  carShow.classList.add('carShow')
-})
-document.getElementById('times').addEventListener('click', () => {
-  carShow.classList.remove('carShow');
-})
-
-  //Cambia color de los links
+//Cambia color de los links
   showAll.addClass('active');
   item.click(function(){
     let catProduct = $(this).attr('category');

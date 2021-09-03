@@ -1,4 +1,5 @@
 //Variables
+const main = document.body;
 const form = document.querySelector('#finder'),
       input = document.querySelector('#input');
 const products = document.querySelectorAll('.store__products--item'),
@@ -7,11 +8,41 @@ const products = document.querySelectorAll('.store__products--item'),
 
 let cartNumber = 1
 
+const mainBars = document.querySelector('#mainBars'),
+      newBars = document.querySelector('#newBar'),
+      menu = document.querySelector('#mainMenu');
+
+const car = document.getElementById('car'),
+      carShow = document.getElementById('carScreen');
+      
+
+//Menu principal
+mainBars.addEventListener('click', () => {
+  menu.classList.add('menuShow');
+  main.classList.add('newBody');
+  mainBars.classList.remove('bars');
+  main.style.overflow="hidden"
+})
+newBars.addEventListener('click', () => {
+  menu.classList.remove('menuShow')
+  main.classList.remove('newBody');
+  mainBars.classList.add('bars');
+  main.style.overflow="auto"
+})
+
 //Buscador
 form.addEventListener('submit', (e) => {                     //Busca la palabra escrita en el input.
   e.preventDefault();
   console.log(input.value.toLowerCase());                    //Imprime en la consola la palabra escrita .
   input.value = ''                                           //Vacia el campo.
+})
+
+//Carrito
+car.addEventListener('click', () => {
+  carShow.classList.add('carShow')
+})
+document.getElementById('times').addEventListener('click', () => {
+  carShow.classList.remove('carShow');
 })
 
 //Simulacion de compra.

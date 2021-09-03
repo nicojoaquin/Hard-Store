@@ -10,7 +10,7 @@ body {
   background-image: url(/assets/images/bg.jpg);
   font-family: $font;
   color: white;
-  max-height: 1100px;
+  transition: 0.3s;
 }
 a {
   text-decoration: none;

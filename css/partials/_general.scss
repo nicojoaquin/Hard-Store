@@ -2,23 +2,77 @@
 
 .header {
   width: 100%;
-  height: 100px;
+  height: 120px;
   background-color: rgb(13, 27, 39);
   overflow: hidden;
 }
+.sideBar {
+  position: absolute;
+  top: 0;
+  left: -400px;
+  width: 300px;
+  height: 100%;
+  background: #000;
+  z-index: 1;
+  transition: 0.3s;
+}
+.sideBar ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 50px;
+  margin-top: 60px;
+}
+.sideBar ul li a {
+  text-transform: uppercase;
+  font-family: sans-serif;
+  font-size: 18px;
+  padding-right: 160px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.sideBar ul li a:hover {
+  background: rgb(97, 96, 96);
+}
+.bars {
+  position: absolute;
+  top: 60px;
+  left: 148px;
+  cursor: pointer;
+}
+.bars span {
+  width: 30px;
+  height: 2px;
+  background: rgb(243, 239, 239);
+  display: block;
+  margin-top: 4px;
+}
+.sideBar.menuShow {
+  transition: 0.4s;
+  left: 0;
+}
+.xBar {
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: absolute;
+  right: 20px;
+  top: 55px;
+  cursor: pointer;
+}
+.newBody {
+  margin-left: 290px;
+  transition: 0.4s;
+}
 .titleAndSearch {
   display: flex;
-  align-items: center;
   justify-content: space-around;
-  align-content: center;
-  padding-top: 10px;
-  gap: 20px;
+  align-items: center;
 }
 .titulo {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
   align-items: center;
+  gap: 30px;
 }
 .titulo img {
   min-width: 40px;
@@ -68,12 +122,12 @@
 }
 .shopCar {
   position: absolute;
-  left: 70%;
+  left: 80%;
 }
 .car-screen {
   background-color: white;
   position: fixed;
-  right: -100vh;
+  right: -1000px;
   top: 0;
   width: 30%;
   height: 100vh;
@@ -193,8 +247,8 @@
 .store__products--item p {
   display: block;
   width: 100%;
-  background: #aab7b8;
-  color: black;
+  background: rgb(7, 43, 83);
+  color: #fff;
   font-weight: bold;
   font-size: 20px;
   text-align: center;
@@ -205,7 +259,13 @@
   font-size: 20px;
 }
 .store__products--item:hover p {
-  background-color: rgb(90, 20, 220);
+  background-color: rgb(220, 110, 20);
+}
+.store__products--item span {
+  font-size: 25px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: rgb(213, 207, 230);
 }
 .addCart {
   background-color: violet;
@@ -284,6 +344,18 @@
   .header {
     padding: 8px;
     height: 120px;
+  }
+  .bars {
+    margin-top: 30px;
+    left: 10px;
+  }
+  .sideBar {
+    left: -1000px;
+    width: 100%;
+    transition: 1.4;
+  }
+  .newBody {
+    margin-left: 0;
   }
   .titulo img {
     padding-right: 20px;
