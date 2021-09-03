@@ -12,7 +12,7 @@
   left: -400px;
   width: 300px;
   height: 100%;
-  background: rgb(19, 18, 18, 1);
+  background: rgb(19, 18, 18);
   z-index: 1;
   transition: 0.4s;
 }
@@ -36,8 +36,8 @@
 }
 .bars {
   position: absolute;
-  top: 60px;
-  left: 148px;
+  top: 50px;
+  left: 10px;
   cursor: pointer;
 }
 .bars span {
@@ -346,13 +346,14 @@
     height: 120px;
   }
   .bars {
-    margin-top: 30px;
+    margin-top: 35px;
     left: 10px;
   }
   .sideBar {
     left: -1000px;
     width: 100%;
-    transition: 1.4;
+    height: 100%;
+    transition: 1s;
   }
   .sideBar ul {
     align-items: center;
