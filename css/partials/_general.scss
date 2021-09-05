@@ -239,6 +239,7 @@
 }
 .store__products--item {
   transition: all 0.4s;
+  margin-left: 2.5%;
 }
 .store__products--item img {
   display: flex;
@@ -325,7 +326,7 @@
   align-items: center;
 }
 .redes__link {
-  background: rgb(121, 131, 218);
+  background: rgb(231, 93, 93);
   width: 40px;
   padding: 2px;
   border-radius: 10px;
@@ -333,7 +334,7 @@
 .redes__link:hover {
   transform: translatey(-1px) scale(1.05);
   transition: 0.5s;
-  background: rgb(231, 93, 93);
+  background: rgb(243, 119, 119);
 }
 #wpp {
   background: green;
