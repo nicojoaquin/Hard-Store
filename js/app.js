@@ -40,10 +40,10 @@ form.addEventListener('submit', (e) => {                     //Busca la palabra 
 
 //Carrito
 car.addEventListener('click', () => {
-  carShow.classList.add('carShow')
+  carScreen.classList.add('carShow')
 })
 document.getElementById('times').addEventListener('click', () => {
-  carShow.classList.remove('carShow');
+  carScreen.classList.remove('carShow');
 })
 
 //Simulacion de compra.
