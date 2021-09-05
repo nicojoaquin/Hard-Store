@@ -2,18 +2,19 @@
 const main = document.body;
 const form = document.querySelector('#finder'),
       input = document.querySelector('#input');
-const products = document.querySelectorAll('.store__products--item'),
-      counter = document.querySelector('#counter'),
-      carScreen = document.querySelector('#carScreen');
 
+const productos = document.querySelector('.store__products');
+
+const carScreen = document.querySelector('#carScreen'),
+      counter = document.querySelector('#counter'),
+      car = document.getElementById('car');    
 let cartNumber = 1
 
 const mainBars = document.querySelector('#mainBars'),
       newBars = document.querySelector('#newBar'),
       menu = document.querySelector('#mainMenu');
 
-const car = document.getElementById('car'),
-      carShow = document.getElementById('carScreen');
+
       
 
 //Menu principal
@@ -55,33 +56,17 @@ class Article{
 }
 
 //Elementos a crear
-const msi = new Article('PC MSI', `$${155000}`, 3,);
-const asus =  new Article('PC Asus', `$${133200}`, 7);
-const hp = new Article("Notebook HP", `$${174600}`, 6) 
-const alienWare = new Article("Notebook AlienWare", `$${410000}`, 2) ;
-const samsung = new Article("Monitor Samsung", `$${22300}`, 4) 
-const viewSonic = new Article("Monitor Viewsonic", `$${44000}`, 5);
-const razer = new Article("Headset Razer" , `$${17500}`, 9) 
-const hyperx = new Article("Headset Hyperx" , `$${11000}`, 8);
+const msi = new Article('msi', `$${155000}`, 3,);
+const asus =  new Article('asus', `$${133200}`, 7);
+const hp = new Article("hp", `$${174600}`, 6) 
+const alienWare = new Article("alienWare", `$${410000}`, 2) ;
+const samsung = new Article("samsung", `$${22300}`, 4) 
+const viewSonic = new Article("viewSonic", `$${44000}`, 5);
+const razer = new Article("razer" , `$${17500}`, 9) 
+const hyperx = new Article("hyperx" , `$${11000}`, 8);
 
 let elements = [msi, asus, hp, alienWare, samsung, viewSonic, razer, hyperx];  //Listamos los elementos para utilizarlos.
 
-//Función de compra.
-for (let i = 0; i < products.length; i++) {
-  products[i].addEventListener('click', (e) => {
-    e.preventDefault();
-
-  if(elements[i].stock > 0){
-    let clone = products[i].cloneNode(true)
-    carScreen.appendChild(clone);
-    counter.textContent = cartNumber++    //Sumamos el carrito cuando clickeamos en un producto,
-  } else{
-      throw 'No hay mas stock!'             //Si no queda stock del producto, la funcion no sigue.
-    }
-
-    stockSub(elements[i])                   
-  })
-}
 
 ////Función que resta el stock del producto.
 const stockSub = (el) => {
@@ -89,3 +74,21 @@ const stockSub = (el) => {
     console.log(el)   
   }
 
+//Agrega al carrito al hacer click.
+productos.addEventListener('click', (e) =>{
+  e.preventDefault();
+
+  elements.forEach(elem => {
+    if(e.target.tagName === 'H3' && e.target.id == elem.id){      
+      if (elem.stock > 0 ) {
+        stockSub(elem)
+        counter.textContent = cartNumber++    //Sumamos el carrito cuando clickeamos en un producto.
+      }
+    }
+  });  
+})
+
+
+  
+
+  
