@@ -51,13 +51,11 @@
   transition: 0.4s;
   left: 0;
 }
-.xBar {
-  font-size: 30px;
-  font-weight: bold;
-  text-transform: uppercase;
+#newBar {
+  color: white;
   position: absolute;
-  right: 20px;
-  top: 55px;
+  right: 5%;
+  top: 50px;
   cursor: pointer;
 }
 .newBody {
@@ -117,12 +115,16 @@
   cursor: pointer;
   display: block;
 }
-.uil-shopping-cart {
+.fa-shopping-cart {
   cursor: pointer;
+}
+#counter {
+  font-size: 20px;
 }
 .shopCar {
   position: absolute;
   left: 80%;
+  top: 8%;
 }
 .car-screen {
   background-color: white;
@@ -146,7 +148,7 @@
   font-weight: bold;
   padding: 20px;
 }
-.uil-times {
+#times {
   color: #050505;
   cursor: pointer;
   position: absolute;
