@@ -24,13 +24,20 @@ mainBars.addEventListener('click', () => {
   main.style.overflow="hidden"
 })
 
-newBars.addEventListener('click', () => {
-  
-//Al hacer click en las cruz, se elimina la clase agregada y desaparece el menu.
-  menu.classList.remove('menuShow')
+
+//Al hacer click en las cruz o en un link, se elimina la clase agregada y desaparece el menu.
+const close = () => {
+  menu.classList.remove('menuShow');
   main.classList.remove('newBody');
   mainBars.classList.add('bars');
   main.style.overflow="auto"
+}
+newBars.addEventListener('click', close)
+
+menu.addEventListener('click', (e) => {
+  if(e.target.tagName === 'A'){
+    close()
+  } 
 })
 
   

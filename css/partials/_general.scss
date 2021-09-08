@@ -59,8 +59,8 @@
   cursor: pointer;
 }
 .newBody {
-  margin-left: 290px;
-  transition: 0.5s ease-in-out;
+  margin-left: 250px;
+  transition: 0.8s;
 }
 .titleAndSearch {
   display: flex;
@@ -124,7 +124,6 @@
 .shopCar {
   position: absolute;
   left: 80%;
-  top: 8%;
 }
 .car-screen {
   background-color: white;
@@ -165,6 +164,7 @@
   width: 98%;
   margin: auto;
 }
+
 .container h2 {
   @include titulos($colorTitulo, $fontTitulo);
   font-weight: 700;
@@ -216,6 +216,7 @@
   width: 180px;
   font-weight: 800;
   border-radius: 10px;
+  transition: 0.3s;
 }
 .imgClass {
   width: 300px;
@@ -309,11 +310,7 @@
   align-items: center;
   justify-content: space-evenly;
   height: 150px;
-  margin-top: 130px;
-  position: sticky;
-  bottom: 0;
   width: 100%;
-  flex: 3;
 }
 .quote {
   font-style: italic;
@@ -323,11 +320,13 @@
   font-family: font;
   text-transform: uppercase;
   font-size: 15px;
+  height: 1px;
 }
 .redes {
   display: flex;
   gap: 50px;
   align-items: center;
+  height: 1px;
 }
 .redes__link {
   background: rgb(231, 93, 93);
