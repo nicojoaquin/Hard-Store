@@ -60,25 +60,26 @@ document.getElementById('times').addEventListener('click', () => {
   
 //Creador de productos. 
 class Article {
-  constructor (id, name, price, cat, stock) {
+  constructor (id, name, price, cat, stock, desc) {
     this.id = id;
     this.name = name;
     this.price = price;
     this.cat = cat
     this.stock = stock
+    this.desc = desc
   }
 }
-const msi = new Article ('msi', 'Pc de escritorio: MSI', `$155000`, 'desktop', 3);
-const asus = new Article ('asus', 'Pc de escritorio: Asus Rog', `$270000`, 'desktop', 2);
-const aorus = new Article ('aorus', 'Pc de escritorio: Gigabyte Aorus', '$240000', 'desktop', 2);
-const hp = new Article ('hp', 'Notebook HP Omen', `$182500`, 'notebooks', 4);
-const alienWare = new Article ('alienware', 'Notebook AlienWare', `$330850`, 'notebooks', 1);
-const samsung = new Article ('samsung', 'Monitor Samsung', `$22000`, 'monitors', 3);
-const viewSonic = new Article ('viewsonic', 'Monitor ViewSonic 144HZ', `$39000`, 'monitors', 3);
-const hyperX = new Article ('hyperx', 'Headset HyperX', `$11300`, 'headsets', 5);
-const razer = new Article ('razer', 'Headset Razer', `$15000`, 'headsets', 6);
+const msi = new Article ('msi', 'PC de escritorio: MSI', `$155000`, 'desktop', 3, `Procesador I5 de ultima generacion, con 16gb de RAM.`);
+const asus = new Article ('asus', 'PC de escritorio: Asus ROG', `$200000`, 'desktop', 2, "Procesador i7 de ultima generacion, con 32gb de RAM.");
+const aorus = new Article ('aorus', 'PC de escritorio: Gigabyte Aorus', '$270000', 'desktop', 2, "Procesador i9 de ultima generacion, con 32gb de RAM.");
+const hp = new Article ('hp', 'Notebook HP Omen', `$182500`, 'notebooks', 4, "Agil y compacta para trabajar y jugar.");
+const alienWare = new Article ('alienware', 'Notebook AlienWare', `$330850`, 'notebooks', 1, "Portatil echo para el gaming, con las ultimas tecnologias.");
+const samsung = new Article ('samsung', 'Monitor Samsung', `$22000`, 'monitors', 3, "Monitor full HD y 60hz de refresco.");
+const viewSonic = new Article ('viewsonic', 'Monitor ViewSonic 144HZ', `$39000`, 'monitors', 3, "Monitor full HD y 144hz de refresco.");
+const hyperX = new Article ('hyperx', 'Headset HyperX', `$11300`, 'headsets', 5, "Sonido envolvente 7.1, y gran calidad de micrófono.");
+const razer = new Article ('razer', 'Headset Razer', `$15000`, 'headsets', 6, "Sonido 7.1 junto a gran calidad de micrófono y construcción.");
 
-let articles = [msi, asus, aorus, hp, alienWare, samsung, viewSonic, hyperX, razer,]; //Array de los productos creados.
+let articles = [msi, asus, aorus, hp, alienWare, samsung, viewSonic, hyperX, razer]; //Array de los productos creados.
 
 articles.forEach(art => {
  
@@ -86,7 +87,8 @@ articles.forEach(art => {
 const createEl = document.createElement('div');
 const createImg = document.createElement('img');
 const createP = document.createElement('p');
-const createH3 = document.createElement('h3');
+const createCard = document.createElement('div');
+const createIcon = document.createElement('i');
 
 createEl.classList.add('store__products--item');
 createEl.setAttribute('category', art.cat);
@@ -96,15 +98,19 @@ createImg.src = `./assets/images/${art.id}.jpg`;
                                                  //Les asignamos las clases y atributos para que coincidan con las propiedades de la clase "Article".
 createP.innerHTML = ` ${art.name} <br /> <span>${art.price}</span>`
 
-createH3.classList.add('addCart');
-createH3.setAttribute('id', art.id);  
-createH3.textContent = 'Agregar al carrito';
+createCard.classList.add('card-container')
+createCard.textContent = art.desc
+
+createIcon.classList.add('addCart');
+createIcon.classList.add("fas", "fa-cart-plus", "fa-3x");
+createIcon.setAttribute('id', art.id);  
 
 //Agregamos los elementos creados con sus clases y propiedades, al HTML.
-store.append(createEl);  
+store.append(createEl);
 createEl.append(createImg); 
 createEl.append(createP);
-createEl.append(createH3);
+createEl.append(createCard) 
+createCard.append(createIcon);
 });
 
 
@@ -172,7 +178,7 @@ loadCart();
 store.addEventListener('click', (e) =>{
   articles.forEach(el => {
 
-    if(e.target.tagName === 'H3' && e.target.id == el.id){   
+    if(e.target.tagName === 'I' && e.target.id == el.id){   
 
       if (el.stock > 0 ) {
         addAlert(el.name);
