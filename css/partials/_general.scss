@@ -278,17 +278,20 @@
   color: rgb(213, 207, 230);
 }
 .addCart {
+  padding: 10px;
   font-family: serif;
   margin: auto;
-  position: relative;
   cursor: pointer;
   z-index: 10;
-  width: 100px;
-  height: 110px;
   transition: 0.3s;
+  text-align: center;
+  transition: 0.4s;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
+
 .addCart:hover {
-  transform: scale(1.1);
+  color: #da4b0a;
 }
 
 .card-container {

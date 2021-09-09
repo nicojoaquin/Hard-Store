@@ -99,7 +99,7 @@ createImg.src = `./assets/images/${art.id}.jpg`;
 createP.innerHTML = ` ${art.name} <br /> <span>${art.price}</span>`
 
 createCard.classList.add('card-container')
-createCard.textContent = art.desc
+createCard.innerHTML = `${art.desc}<hr>`;
 
 createIcon.classList.add('addCart');
 createIcon.classList.add("fas", "fa-cart-plus", "fa-3x");
