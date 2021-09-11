@@ -51,11 +51,17 @@ form.addEventListener('submit', (e) => {                     //Busca la palabra 
   
 //Carrito
 car.addEventListener('click', () => {
-  carScreen.classList.add('carShow')
+  carScreen.classList.toggle('carShow')
+  if(carScreen.classList.contains('carShow')){
+  document.body.style.overflowY = "hidden"
+  }
+ else {
+  document.body.style.overflowY = "auto"
+ }
 })
-document.getElementById('times').addEventListener('click', () => {
-  carScreen.classList.remove('carShow');
-})
+
+
+
 
 //Creador de productos. 
 class Article {
@@ -175,24 +181,46 @@ const loadCart = () => {  //Al recargar la pagina, sigue el valor del carrito co
 }
 loadCart();
 
-//Agrega al carrito al hacer click.
+carrito = [];
+  
+const addCartFunction = (e) => {
+  const findProducts = articles.find(element => element.id === e.target.id);
+  carrito.push(findProducts);
+  console.log(carrito)
+};
+  
+  
+  //Agrega al carrito al hacer click.
 articles.forEach(el => {
- 
+    
   store.addEventListener('click', (e) =>{
       
     if(e.target.tagName === 'I' && e.target.id == el.id){ 
-      
+        
       if (el.stock > 0) {
         addAlert(el.name);
         stockSub(el)
         cartNumbers(); //Sumamos el carrito cuando clickeamos en un producto.
+        addCartFunction(e)
+
+        
+        carScreen.innerHTML = `
+                <h2>Agregue productos aquí...</h2>
+                <hr />
+                <div class = "carrito-div">
+                <img class= "carrito-img" src="./assets/images/${el.id}.jpg" alt="">
+                <p class = "carrito-p">${el.name}
+                <br />
+                <span>${el.price}<span>
+                <p>
+                </div>
+                <hr />`
+
       } else {
         cantAlert();
         throw 'No hay mas stock!';
-      }
-      
-    }
-    
+      } 
+    }    
   })
 })
 

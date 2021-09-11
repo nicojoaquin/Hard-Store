@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+
   
 //Variables
 const item = $('.store__category--item');
@@ -49,4 +49,4 @@ $('#nav__hamburger').click(function () {
       products.css('transform', 'scale(1)');
     } setTimeout(setAll, 100);
     })
-})
+

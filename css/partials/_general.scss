@@ -129,7 +129,6 @@
   background-color: white;
   position: fixed;
   right: -1000px;
-  top: 0;
   width: 30%;
   height: 100vh;
   z-index: 100;
@@ -146,6 +145,21 @@
   font-family: $font;
   font-weight: bold;
   padding: 20px;
+}
+.carrito-div {
+  display: flex;
+}
+.carrito-img {
+  width: 100px;
+  height: 100px;
+}
+.carrito-p {
+  font-family: sans-serif;
+  color: #050505;
+}
+.carrito-p span {
+  font-weight: bold;
+  font-size: 25px;
 }
 #times {
   color: #050505;
@@ -265,9 +279,7 @@
   border-radius: 0px 0px 20px 20px;
   transition: 0.6s;
 }
-.store__products--item span {
-  font-size: 20px;
-}
+
 .store__products--item:hover p {
   background-color: #6a8cca;
 }
