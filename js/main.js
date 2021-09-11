@@ -202,11 +202,8 @@ articles.forEach(el => {
         stockSub(el)
         cartNumbers(); //Sumamos el carrito cuando clickeamos en un producto.
         addCartFunction(e)
-
-        
-        carScreen.innerHTML = `
-                <h2>Agregue productos aquí...</h2>
-                <hr />
+  
+        carScreen.innerHTML += `
                 <div class = "carrito-div">
                 <img class= "carrito-img" src="./assets/images/${el.id}.jpg" alt="">
                 <p class = "carrito-p">${el.name}

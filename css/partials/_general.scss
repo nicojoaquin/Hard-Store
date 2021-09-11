@@ -118,6 +118,7 @@
 .fa-shopping-cart {
   cursor: pointer;
 }
+
 #counter {
   font-size: 20px;
 }
@@ -178,7 +179,6 @@
   width: 98%;
   margin: auto;
 }
-
 .container h2 {
   @include titulos($colorTitulo, $fontTitulo);
   font-weight: 700;
