@@ -57,7 +57,6 @@ document.getElementById('times').addEventListener('click', () => {
   carScreen.classList.remove('carShow');
 })
 
-  
 //Creador de productos. 
 class Article {
   constructor (id, name, price, cat, stock, desc) {
@@ -67,9 +66,10 @@ class Article {
     this.cat = cat
     this.stock = stock
     this.desc = desc
+    
   }
 }
-const msi = new Article ('msi', 'PC de escritorio: MSI', `$155000`, 'desktop', 3, `Procesador I5 de ultima generacion, con 16gb de RAM.`);
+const msi = new Article ('msi', 'PC de escritorio: MSI', `$155000`, 'desktop', 3, `Procesador I5 de ultima generacion, con 16gb de RAM.`, );
 const asus = new Article ('asus', 'PC de escritorio: Asus ROG', `$200000`, 'desktop', 2, "Procesador i7 de ultima generacion, con 32gb de RAM.");
 const aorus = new Article ('aorus', 'PC de escritorio: Gigabyte Aorus', '$270000', 'desktop', 2, "Procesador i9 de ultima generacion, con 32gb de RAM.");
 const hp = new Article ('hp', 'Notebook HP Omen', `$182500`, 'notebooks', 4, "Agil y compacta para trabajar y jugar.");
@@ -82,7 +82,7 @@ const razer = new Article ('razer', 'Headset Razer', `$15000`, 'headsets', 6, "S
 let articles = [msi, asus, aorus, hp, alienWare, samsung, viewSonic, hyperX, razer]; //Array de los productos creados.
 
 articles.forEach(art => {
- 
+
 //Creamos los elementos que iran adentro de la tienda.  
 const createEl = document.createElement('div');
 const createImg = document.createElement('img');
@@ -148,10 +148,12 @@ function cantAlert() {
 //Funciónes que restan el stock del producto y agregan carrito en storage
   
 const stockSub = (el) => {
-  el.stock -= 1      //Resta el stock.
-  console.log(el)   
+  el.stock -= 1;     //Resta el stock.
+  console.log(el);
+  sessionStorage.setItem(el.id, JSON.stringify(el)); 
 }
-  
+
+
 const cartNumbers = () => {
   let productNumbers = parseInt(sessionStorage.getItem("cart"));  //Almacenamos el valor del storage.
   
@@ -173,25 +175,25 @@ const loadCart = () => {  //Al recargar la pagina, sigue el valor del carrito co
 }
 loadCart();
 
-  
 //Agrega al carrito al hacer click.
-store.addEventListener('click', (e) =>{
-  articles.forEach(el => {
-
-    if(e.target.tagName === 'I' && e.target.id == el.id){   
-
-      if (el.stock > 0 ) {
+articles.forEach(el => {
+ 
+  store.addEventListener('click', (e) =>{
+      
+    if(e.target.tagName === 'I' && e.target.id == el.id){ 
+      
+      if (el.stock > 0) {
         addAlert(el.name);
-        stockSub(el);
+        stockSub(el)
         cartNumbers(); //Sumamos el carrito cuando clickeamos en un producto.
-        
       } else {
         cantAlert();
         throw 'No hay mas stock!';
       }
-
+      
     }
-
+    
   })
 })
+
 
