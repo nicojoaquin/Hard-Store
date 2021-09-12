@@ -96,7 +96,7 @@ const createP = document.createElement('p');
 const createCard = document.createElement('div');
 const createIcon = document.createElement('i');
 
-createEl.classList.add('store__products--item');
+createEl.classList.add('store__products--item', 'wow', 'animate__animated', 'animate__slideInUp');
 createEl.setAttribute('category', art.cat);
                                                  
 createImg.classList.add ('imgClass');

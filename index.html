@@ -14,6 +14,11 @@
       name="keywords"
       content="hardware argentina, hardware, argentina, Argentina, Hardware Argentina, tienda online, tienda, pagina online, web hardware, hardstore, HardStore, HardStore oficial, HardStore online, computacion, pc, perifericos, monitores, computadoras, notebooks, portatil, headset, auriculares, gamer, pc gamer, pc gamer argentiona, tienda gamer"
     />
+    <meta
+      name="google-site-verification"
+      content="L8zQ7MU_a28Ujtb8aD_HkI19bLeEBCopyBnDEcwPv3k"
+    />
+    <link rel="cannonical" href="" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -32,6 +37,10 @@
     />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <script
       src="https://kit.fontawesome.com/b6e2e379a5.js"
       crossorigin="anonymous"
@@ -248,7 +257,7 @@
         </div>
       </section>
       <section id="about" class="about">
-        <div class="about-container">
+        <div class="about-container wow animate__animated animate__slideInUp">
           <div class="about__quotes">
             <h2>¿Quienes somos?</h2>
             <hr />
@@ -272,7 +281,10 @@
           <i class="fas fa-arrow-circle-up"></i>
         </a>
       </section>
-      <section id="contact" class="contactUs">
+      <section
+        id="contact"
+        class="contactUs wow animate__animated animate__slideInUp"
+      >
         <div class="contact-container"></div>
       </section>
     </main>
@@ -304,5 +316,9 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/main.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script>
+      new WOW().init();
+    </script>
   </body>
 </html>
