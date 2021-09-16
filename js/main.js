@@ -151,7 +151,7 @@ function cantAlert() {
 }   
 
   
-//Funciónes que restan el stock del producto y agregan carrito en storage
+//Función que restan el stock del producto.
   
 const stockSub = (el) => {
   el.stock -= 1;     //Resta el stock.
@@ -160,6 +160,33 @@ const stockSub = (el) => {
 }
 
 
+//Crea el producto en el carrito.
+const htmlCar = (el) => {
+  carScreen.innerHTML += `
+                <div class = "carrito-div">
+                <img class= "carrito-img" src="./assets/images/${el.id}.jpg" alt="">
+                <p class = "carrito-p">${el.name}
+                <br />
+                <span>${el.price}<span>
+                <p>
+                </div>
+                <hr />`
+
+  sessionStorage.setItem('Carrito', JSON.stringify(carScreen.innerHTML));
+}
+
+
+//Carrito en el storage.
+const loadhtml = () => {
+  let carhtml =  JSON.parse(sessionStorage.getItem('Carrito'));
+
+  if(carhtml) {
+    carScreen.innerHTML = carhtml;
+  }
+}
+loadhtml()
+
+//Storage del contador del carrito.
 const cartNumbers = () => {
   let productNumbers = parseInt(sessionStorage.getItem("cart"));  //Almacenamos el valor del storage.
   
@@ -181,37 +208,29 @@ const loadCart = () => {  //Al recargar la pagina, sigue el valor del carrito co
 }
 loadCart();
 
+
+//Agregar al array del carrito.
 carrito = [];
   
 const addCartFunction = (e) => {
-  const findProducts = articles.find(element => element.id === e.target.id);
-  carrito.push(findProducts);
+  carrito.push(e);
   console.log(carrito)
 };
   
   
-  //Agrega al carrito al hacer click.
+//Agrega al carrito al hacer click.
 articles.forEach(el => {
     
   store.addEventListener('click', (e) =>{
       
-    if(e.target.tagName === 'I' && e.target.id == el.id){ 
+    if(e.target.id == el.id){ 
         
       if (el.stock > 0) {
         addAlert(el.name);
         stockSub(el)
         cartNumbers(); //Sumamos el carrito cuando clickeamos en un producto.
-        addCartFunction(e)
-  
-        carScreen.innerHTML += `
-                <div class = "carrito-div">
-                <img class= "carrito-img" src="./assets/images/${el.id}.jpg" alt="">
-                <p class = "carrito-p">${el.name}
-                <br />
-                <span>${el.price}<span>
-                <p>
-                </div>
-                <hr />`
+        addCartFunction(el)
+        htmlCar(el)
 
       } else {
         cantAlert();
