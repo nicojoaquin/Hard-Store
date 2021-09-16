@@ -3,7 +3,7 @@
 .header {
   width: 100%;
   height: 120px;
-  background-color: rgb(13, 27, 39);
+  background-color: rgb(7, 43, 83);
   overflow: hidden;
 }
 .sideBar {
@@ -14,7 +14,7 @@
   height: 100%;
   background: rgb(19, 18, 18);
   z-index: 1;
-  transition: 0.4s;
+  transition: left 0.5s;
 }
 .sideBar ul {
   display: flex;
@@ -48,7 +48,7 @@
   margin-top: 4px;
 }
 .sideBar.menuShow {
-  transition: 0.4s;
+  transition: left 0.3s;
   left: 0;
 }
 #newBar {
@@ -60,7 +60,7 @@
 }
 .newBody {
   margin-left: 250px;
-  transition: 0.8s;
+  transition: margin-left 0.7s;
 }
 .titleAndSearch {
   display: flex;
@@ -237,7 +237,7 @@
   height: 275px;
 }
 .active {
-  background-color: rgb(20, 20, 150);
+  background-color: rgb(7, 43, 83);
 }
 .store__category a:hover {
   background-color: rgb(221, 126, 48);
@@ -339,7 +339,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 50px;
-  background: rgb(13, 27, 39);
+  background: rgb(7, 43, 83);
   align-items: center;
   justify-content: space-evenly;
   height: 150px;
