@@ -1,7 +1,7 @@
-import { addAlert, cantAlert } from './alerts.js'
-import { articles, create } from './products.js'
+import {create, articles} from './products.js'
+import {addAlert, cantAlert} from './alerts.js'
 
-create()
+create();
 
 //Variables
 const store = document.querySelector('.store__products');
@@ -20,7 +20,7 @@ car.addEventListener('click', () => {
     document.body.style.overflowY = "auto"
    }
   })
-   
+
 
 //Agrega al carrito al hacer click.
 articles.forEach(el => {

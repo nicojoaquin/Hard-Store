@@ -1,3 +1,5 @@
+import { articles } from './products.js'
+
 //Variables.
 const main = document.body;
 const form = document.querySelector('#finder'),
@@ -9,7 +11,6 @@ const mainBars = document.querySelector('#mainBars'),
 
 
 //Menu principal
-
 mainBars.addEventListener('click', () => {
 
 //Al hacer click en las barras, se agrega una nueva clase y aparece el menu.
@@ -18,7 +19,6 @@ mainBars.addEventListener('click', () => {
   mainBars.classList.remove('bars');
   main.style.overflow="hidden"
 })
-
 
 //Al hacer click en las cruz o en un link, se elimina la clase agregada y desaparece el menu.
 const close = () => {
@@ -36,14 +36,18 @@ menu.addEventListener('click', (e) => {
 })
 
   
-//Buscador
-form.addEventListener('submit', (e) => {                     //Busca la palabra escrita en el input.
+// //Buscador
+form.addEventListener('submit', (e) => {        //Busca la palabra escrita en el input.
   e.preventDefault();
-  console.log(input.value.toLowerCase());                    //Imprime en la consola la palabra escrita .
-  input.value = ''                                           //Vacia el campo.
+  
+  const articulos = articles;    
+  const productSearch = articulos.find(prod => prod.id === input.value);
+  console.log(productSearch)
+
+  input.value = ''                              //Vacia el campo.
 })
 
-  
+
 
 
 

@@ -1,7 +1,7 @@
 //Alertas personalizadas.
   
 //Se ejecuta cuando agregamos un producto.
-export function addAlert(articulo) {
+function addAlert(articulo) {
     Swal.fire({
       title: "Agregado!",
       html: `Has agregado el artículo: <strong>${articulo}</strong>`,
@@ -15,7 +15,7 @@ export function addAlert(articulo) {
   }
       
   //Se ejecuta cuando no hay mas stock.
-  export function cantAlert() {
+  function cantAlert() {
     swal.fire({
       title: "No hay mas stock!",
        text: "Por favor, elija otro artículo.",
@@ -27,3 +27,7 @@ export function addAlert(articulo) {
       confirmButtonColor: 'blue'
     })
   } 
+
+  export {
+    addAlert, cantAlert
+  }

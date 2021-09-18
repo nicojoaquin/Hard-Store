@@ -23,11 +23,24 @@ const hyperX = new Article ('hyperx', 'Headset HyperX', 11300, 'headsets', 5, "S
 const razer = new Article ('razer', 'Headset Razer', 15000, 'headsets', 6, "Sonido 7.1 junto a gran calidad de micrófono y construcción.");
 const logitech = new Article ('logitech', 'Headset Logitech', 13000, 'headsets', 3, 'Sonido de gran calidad y micrófono excelente.' )
 
-export let articles = [msi, asus, aorus, hp, alienWare, samsung, viewSonic, hyperX, razer, logitech]; //Array de los productos creados.
+let articles = [msi, asus, aorus, hp, alienWare, samsung, viewSonic, hyperX, razer, logitech]; //Array de los productos creados.
+
+const URLJSON  = "../db/data.json"
+fetch(URLJSON)
+.then(response => response.json())
+.then( data => {
+    console.log(data)
+  })
+$.get(URLJSON, (resp, est) => {
+  if(est === "success") {
+    let data = resp;
+      console.log(data)     
+  }
+});
 
 
 //Creamos los elementos que iran adentro de la tienda.
-export const create = () => {
+const create = () => {
 articles.forEach(art => {
   
   const createEl = document.createElement('div');
@@ -37,6 +50,7 @@ articles.forEach(art => {
   const createIcon = document.createElement('i');
   
   createEl.classList.add('store__products--item');
+  createEl.id = art.id
   createEl.setAttribute('category', art.cat);
                                                    
   createImg.classList.add ('imgClass');
@@ -59,4 +73,8 @@ articles.forEach(art => {
   createCard.append(createIcon);
 
   });
+}
+
+export {
+  create, articles
 }
