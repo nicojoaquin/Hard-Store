@@ -1,5 +1,3 @@
-
-  
 //Variables
 const item = $('.store__category--item');
 const products = $('.store__products--item');
