@@ -1,3 +1,5 @@
+const queryFunction = () => {
+
 //Variables
 const item = $('.store__category--item');
 const products = $('.store__products--item');
@@ -22,6 +24,7 @@ $('#nav__hamburger').click(function () {
 })
 
 //Eventos de links
+
 showAll.addClass('active');
 
 item.click(function(){
@@ -45,4 +48,12 @@ showAll.click(function(){
   products.show();
   products.css('transform', 'scale(1)');  
 })
+
+}
+
+export {
+  queryFunction
+}
+
+
 
