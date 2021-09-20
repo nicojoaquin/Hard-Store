@@ -1,82 +1,92 @@
-[
 {
-    "id": "msi",
-    "name": "PC de escritorio: MSI",
-    "price": 155000,
-    "cat": "desktop",
-    "stock": 3,
-    "desc": "Procesador I5 de ultima generacion, con 16gb de RAM."
-  },
-  {
-    "id": "asus",
-    "name": "PC de escritorio: Asus ROG",
-    "price": 200000,
-    "cat": "desktop",
-    "stock": 2,
-    "desc": "Procesador i7 de ultima generacion, con 32gb de RAM."
-  },
-  {
-    "id": "aorus",
-    "name": "PC de escritorio: Gigabyte Aorus",
-    "price": 270000,
-    "cat": "desktop",
-    "stock": 2,
-    "desc": "Procesador i9 de ultima generacion, con 32gb de RAM."
-  },
-  {
-    "id": "hp",
-    "name": "Notebook HP Omen",
-    "price": 182500,
-    "cat": "notebooks",
-    "stock": 4,
-    "desc": "Agil y compacta para trabajar y jugar."
-  },
-  {
-    "id": "alienware",
-    "name": "Notebook AlienWare",
-    "price": 330850,
-    "cat": "notebooks",
-    "stock": 1,
-    "desc": "Portatil echo para el gaming, con las ultimas tecnologias."
-  },
-  {
-    "id": "samsung",
-    "name": "Monitor Samsung",
-    "price": 22000,
-    "cat": "monitors",
-    "stock": 3,
-    "desc": "Monitor full HD y 60hz de refresco."
-  },
-  {
-    "id": "viewsonic",
-    "name": "Monitor ViewSonic 144HZ",
-    "price": 39000,
-    "cat": "monitors",
-    "stock": 3,
-    "desc": "Monitor full HD y 144hz de refresco."
-  },
-  {
-    "id": "hyperx",
-    "name": "Headset HyperX",
-    "price": 11300,
-    "cat": "headsets",
-    "stock": 5,
-    "desc": "Sonido envolvente 7.1, y gran calidad de micrófono."
-  },
-  {
-    "id": "razer",
-    "name": "Headset Razer",
-    "price": 15000,
-    "cat": "headsets",
-    "stock": 6,
-    "desc": "Sonido 7.1 junto a gran calidad de micrófono y construcción."
-  },
-  {
-    "id": "logitech",
-    "name": "Headset Logitech",
-    "price": 13000,
-    "cat": "headsets",
-    "stock": 3,
-    "desc": "Sonido de gran calidad y micrófono excelente."
-  }
-]
+  "articulos": [
+    {
+      "id": "msi",
+      "name": "PC de escritorio: MSI",
+      "price": 155000,
+      "cat": "desktop",
+      "stock": 3,
+      "desc": "Procesador I5 de ultima generacion, con 16gb de RAM."
+    },
+    {
+      "id": "asus",
+      "name": "PC de escritorio: Asus ROG",
+      "price": 200000,
+      "cat": "desktop",
+      "stock": 2,
+      "desc": "Procesador i7 de ultima generacion, con 32gb de RAM."
+    },
+    {
+      "id": "aorus",
+      "name": "PC de escritorio: Gigabyte Aorus",
+      "price": 270000,
+      "cat": "desktop",
+      "stock": 2,
+      "desc": "Procesador i9 de ultima generacion, con 32gb de RAM."
+    },
+    {
+      "id": "hp",
+      "name": "Notebook HP Omen",
+      "price": 182500,
+      "cat": "notebooks",
+      "stock": 4,
+      "desc": "Agil y compacta para trabajar y jugar."
+    },
+    {
+      "id": "alienware",
+      "name": "Notebook AlienWare",
+      "price": 330850,
+      "cat": "notebooks",
+      "stock": 1,
+      "desc": "Portatil echo para el gaming, con las ultimas tecnologias."
+    },
+    {
+      "id": "samsung",
+      "name": "Monitor Samsung",
+      "price": 22000,
+      "cat": "monitors",
+      "stock": 3,
+      "desc": "Monitor full HD y 60hz de refresco."
+    },
+    {
+      "id": "viewsonic",
+      "name": "Monitor ViewSonic 144HZ",
+      "price": 39000,
+      "cat": "monitors",
+      "stock": 3,
+      "desc": "Monitor full HD y 144hz de refresco."
+    },
+    {
+      "id": "hyperx",
+      "name": "Headset HyperX",
+      "price": 11300,
+      "cat": "headsets",
+      "stock": 5,
+      "desc": "Sonido envolvente 7.1, y gran calidad de micrófono."
+    },
+    {
+      "id": "razer",
+      "name": "Headset Razer",
+      "price": 15000,
+      "cat": "headsets",
+      "stock": 6,
+      "desc": "Sonido 7.1 junto a gran calidad de micrófono y construcción."
+    },
+    {
+      "id": "logitech",
+      "name": "Headset Logitech",
+      "price": 13000,
+      "cat": "headsets",
+      "stock": 3,
+      "desc": "Sonido de gran calidad y micrófono excelente."
+    },
+    {
+      "id": "asusTuf",
+      "name": "Monitor Asus TUF 144hz",
+      "price": 71600,
+      "cat": "monitors",
+      "stock": 4,
+      "desc": "Pantalla curva con 144hz de refresco y panel VA de alta calidad"
+    }
+  ]
+}
