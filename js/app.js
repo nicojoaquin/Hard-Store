@@ -1,9 +1,14 @@
-import  {showCar, buyEvent, loadCart, loadhtml, finder } from './functions.js'
+import  {showCar, buyEvent, loadCart, loadhtml, finder, removeItem } from './functions.js'
 import { queryFunction } from './query.js'
 
 showCar();
 loadCart();
 loadhtml();
+removeItem()
+
+
+
+
 
 //Variables
 const store = document.querySelector('.store__products');
@@ -14,7 +19,7 @@ const create = (dt) => {
   store.innerHTML +=  `
                         <div class="store__products--item" id="${dt.id}" category="${dt.cat}">
                           <img class="imgClass" src="./assets/images/products/${dt.id}.jpg">
-                          <p> ${dt.name} <br> <span>$${dt.price}</span></p>
+                          <p> <span>${dt.name}</span> <br> <span class = "price">$${dt.price}</span></p>
                           <div class="card-container">${dt.desc}
                             <hr>
                             <i class="addCart fas fa-cart-plus fa-3x" id="${dt.id}"></i>
@@ -30,13 +35,17 @@ const URLJSON  = "https://my-json-server.typicode.com/nicojoaquin/fakeAPI/articu
 const getALL = async () => {
 await fetch(URLJSON)
 .then(resp =>  resp.json())
-.then(data => {
+.then(async data => {
+
+ await Promise.all(data.map(dt => create(dt))) 
+
   data.forEach ( dt =>  {   
-    create(dt)
     buyEvent(dt) 
     queryFunction() 
   })
+
   finder(data)
+  
 })  
 
 //Crear un nuevo producto.
@@ -54,9 +63,10 @@ let options = {
     'Content-type': 'application/json; charset=UTF-8',
   }
 }
- await fetch(URLJSON, options)
-.then((resp) =>  resp.json())
-.then(data => {
+ fetch(URLJSON, options)
+.then((resp) => resp.json())
+.then(   data => {
+
   create(data)
   buyEvent(data)
   queryFunction()
@@ -64,7 +74,5 @@ let options = {
 }
 
 document.addEventListener('DOMContentLoaded', getALL)
-
-
 
 

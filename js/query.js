@@ -1,21 +1,17 @@
-const queryFunction = () => {
 
 //Variables
-const item = $('.store__category--item');
-const products = $('.store__products--item');
-const showAll = $('.store__category--item[category="all"]');
 
 
 //Responsive menu 
 $('#nav__hamburger').click(function () {
   $('.store__category').slideToggle(); //Se desplaza el menu
-
+  
   if($('#ham').attr('class') == 'uil uil-bars'){     //Cambia icono al pulsar el boton
     $('#ham').removeClass('uil uil-bars').addClass('uil uil-arrow-up');
   } else {
     $('#ham').removeClass('uil uil-arrow-up').addClass('uil uil-bars');
   } 
-                                                                
+  
   item.click(function(){
     $('.store__category').slideUp();
     $('#ham').removeClass('uil uil-bars').addClass('uil uil-arrow-up'); //Cambia icono y cierra el menu al pulsar el link
@@ -24,30 +20,35 @@ $('#nav__hamburger').click(function () {
 })
 
 //Eventos de links
+const queryFunction = () => {
 
-showAll.addClass('active');
+  const item = $('.store__category--item');
+  const products = $('.store__products--item');
+  const showAll = $('.store__category--item[category="all"]');
 
-item.click(function(){
-  let catProduct = $(this).attr('category');
+  showAll.addClass('active');
 
-  //Cambia color de los links.
-  item.removeClass('active');
-  $(this).addClass('active');
+  item.click(function(){
+    let catProduct = $(this).attr('category');
 
-  //Oculta todos los productos.
-  products.hide();
-  products.css('transform', 'scale(0)');
-  
-  //Muestra cada producto. 
-  $(`.store__products--item[category=${catProduct}]`).show();
-  $(`.store__products--item[category=${catProduct}]`).css('transform', 'scale(1)');  
-})
+    //Cambia color de los links.
+    item.removeClass('active');
+    $(this).addClass('active');
 
-//Muestra todos los productos.
-showAll.click(function(){ 
-  products.show();
-  products.css('transform', 'scale(1)');  
-})
+    //Oculta todos los productos.
+    products.hide();
+    products.css('transform', 'scale(0)');
+    
+    //Muestra cada producto. 
+    $(`.store__products--item[category=${catProduct}]`).show();
+    $(`.store__products--item[category=${catProduct}]`).css('transform', 'scale(1)');  
+  })
+
+  //Muestra todos los productos.
+  showAll.click(function(){ 
+    products.show();
+    products.css('transform', 'scale(1)');  
+  })
 
 }
 

@@ -2,11 +2,12 @@ import { addAlert, cantAlert } from './alerts.js'
 
 const store = document.querySelector('.store__products');
 const carScreen = document.querySelector('#carScreen'),
-      counter = document.querySelector('#counter'),
-      car = document.querySelector('#car');
+counter = document.querySelector('#counter'),
+car = document.querySelector('#car');
 const form = document.querySelector('#finder'),
-      input = document.querySelector('#input');
-      let carrito = [];
+input = document.querySelector('#input');
+let carrito = [];
+let totalC = []
 
 
 //Mostrar carrito
@@ -22,28 +23,65 @@ car.addEventListener('click', () => {
 })
 }
 
+
+//Eliminar articulo del carrito.
+const removeItem = () => {  
+
+  carScreen.addEventListener('click', (e) => {
+
+  const  element = e.target.parentElement.parentElement.parentElement;
+
+  if( e.target.localName.includes('i')) {
+
+
+    carScreen.removeChild(element)
+    sessionStorage.setItem('Carrito', JSON.stringify(carScreen.innerHTML));
+
+    let productNumbers = parseInt(sessionStorage.getItem("cart"));
+    sessionStorage.setItem('cart', productNumbers - 1)
+    counter.textContent -= 1
+
+    
+    const totalCounter = document.querySelector('#total')
+    console.log(totalC)  
+
+    if (totalC.length === 0) {                 //Si el array esta vacío, el total es 0.
+      totalCounter.textContent = `Total: $0`
+    }
+
+  }
+
+})
+
+}
+
+
 //Agrega al carrito al hacer click.
 const buyEvent = (dt) => {
- 
+  
   store.addEventListener('click', (e) =>{
     if(e.target.id == dt.id){ 
-    
+      
       if (dt.stock > 0) {
+        const producto = e.target.parentElement.parentElement  
+        const items = dt.price
+        totalC.push(items)
+        totalFunction();
         addAlert(dt.name);
         cartNumbers(); //Sumamos el carrito cuando clickeamos en un producto.
         stockSub(dt)
-        htmlCar(dt)
-        addCartFunction(dt)
-  
+        htmlCar(producto, dt)
+        addCartFunction(producto)  
       } else {
         cantAlert();
         throw 'No hay mas stock!';
       } 
     } 
   })
-  }
+
+}
   
-  
+
 //Storage del contador del carrito.
 const cartNumbers = () => {
   let productNumbers = parseInt(sessionStorage.getItem("cart"));  //Almacenamos el valor del storage.
@@ -64,8 +102,7 @@ const loadCart = () => {  //Al recargar la pagina, sigue el valor del carrito co
   counter.textContent = productNumbers;
   }
 }
-  
-  
+   
   
 //Función que restan el stock del producto.    
 const stockSub = (dt) => {
@@ -73,20 +110,26 @@ const stockSub = (dt) => {
   console.log(dt);
   sessionStorage.setItem(dt.id, JSON.stringify(dt)); 
 }
-  
-  
+
+
 //Crea el producto en el carrito.
-const htmlCar = (dt) => {
+const htmlCar = (producto, dt) => {
+  const name = producto.querySelector('span').textContent
+  const precio = producto.querySelector('.price').textContent
+  const id = producto.getAttribute('id')
+
   carScreen.innerHTML += `
                 <div class = "carrito-div">
-                <img class= "carrito-img" src="./assets/images/products/${dt.id}.jpg" alt="">
-                <p class = "carrito-p">${dt.name}
+                <img class= "carrito-img" src="./assets/images/products/${producto.id}.jpg" alt="">
+                <p class = "carrito-p">${name}
                 <br />
-                <span>$${dt.price}<span>
-                <p>
+                <span>${precio}<span>
+                <br />
+                <p>                                           
+                <button><i id = "${id}" class="fas fa-times-circle fa-2x"></i></button>              
                 </div>
-                <hr />`
-  
+               `
+
   sessionStorage.setItem('Carrito', JSON.stringify(carScreen.innerHTML));
 }
   
@@ -94,18 +137,33 @@ const htmlCar = (dt) => {
 const loadhtml = () => {
   let carhtml =  JSON.parse(sessionStorage.getItem('Carrito'));
   
+  
   if(carhtml) {
     carScreen.innerHTML = carhtml;
-  }
+  } 
 }
  
-  
 //Agregar al array del carrito.
-const addCartFunction = (e) => {
-  carrito.push(e);
-  console.log(carrito)
+const addCartFunction = (producto) => {
+  carrito.push(producto);
+  console.log(carrito) 
 };
-  
+
+
+//Sacamos el total del carrito a medida que agregamos productos.
+const totalFunction = () => { 
+
+  const totalMoney = totalC.reduce(function(total,items){
+      total += items;
+      return total
+    },0)
+
+  const totalCounter = document.querySelector('#total')
+  totalCounter.textContent = `Total: $${totalMoney}`
+  sessionStorage.setItem('total', JSON.stringify(totalC))
+
+}
+
 
 //Buscador
 const finder = (data) => {
@@ -124,5 +182,7 @@ const finder = (data) => {
     buyEvent,
     loadCart,
     loadhtml,
-    finder
+    finder,
+    removeItem
+    
   }

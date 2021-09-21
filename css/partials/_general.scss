@@ -15,6 +15,7 @@
   background: rgb(19, 18, 18);
   z-index: 1;
   transition: left 0.5s;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.22);
 }
 .sideBar ul {
   display: flex;
@@ -115,8 +116,9 @@
   cursor: pointer;
   display: block;
 }
-.fa-shopping-cart {
+.fa-cart-arrow-down {
   cursor: pointer;
+  color: #d4caca;
 }
 
 #counter {
@@ -135,10 +137,27 @@
   z-index: 100;
   transition: 0.8s;
   overflow: scroll;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.22);
 }
 .carShow {
   right: 0;
   transition: 0.5s;
+}
+.checkout-class {
+  position: absolute;
+  top: 80px;
+  right: 5%;
+  display: flex;
+  gap: 10px;
+}
+.checkout-class h3 {
+  font-style: italic;
+  background-color: green;
+  border-radius: 5px;
+  padding: 5px;
+}
+.checkout-class h3:hover {
+  background-color: rgb(43, 156, 43);
 }
 .car-screen h2 {
   color: black;
@@ -149,6 +168,7 @@
 }
 .carrito-div {
   display: flex;
+  border-bottom: 1px solid black;
 }
 .carrito-img {
   width: 100px;
@@ -161,6 +181,16 @@
 .carrito-p span {
   font-weight: bold;
   font-size: 25px;
+}
+.fa-times-circle {
+  background-color: white;
+  color: red;
+  position: absolute;
+  right: 5%;
+  cursor: pointer;
+}
+.fa-times-circle:hover {
+  color: rgb(243, 65, 65);
 }
 #times {
   color: #050505;
@@ -274,7 +304,7 @@
   background: rgb(7, 43, 83);
   color: #fff;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 20px;
   text-align: center;
   border-radius: 0px 0px 20px 20px;
   transition: 0.6s;
@@ -283,7 +313,7 @@
 .store__products--item:hover p {
   background-color: #6a8cca;
 }
-.store__products--item span {
+.store__products--item span:nth-child(2) {
   font-size: 25px;
   font-weight: bold;
   font-family: sans-serif;
