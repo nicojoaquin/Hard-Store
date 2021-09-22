@@ -1,10 +1,9 @@
-import  {showCar, buyEvent, loadCart, loadhtml, finder, removeItem } from './functions.js'
+import  {showCar, buyEvent, finder } from './functions.js'
 import { queryFunction } from './query.js'
 
 showCar();
-loadCart();
-loadhtml();
-removeItem()
+
+
 
 
 

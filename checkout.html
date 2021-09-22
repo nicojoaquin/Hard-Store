@@ -42,4 +42,34 @@
       crossorigin="anonymous"
     ></script>
   </head>
+  <body>
+    <header class="header">
+      <div class="titleAndSearch">
+        <div class="titulo">
+          <a href="index.html"> <h1 class="titulo__h1 link">Hard Store</h1></a>
+          <img
+            src="./assets/images/logo.ico"
+            alt="titulo__logo"
+            height="60px"
+            width="60px"
+          />
+        </div>
+        <form class="buscador" id="finder">
+          <input id="input" placeholder="Buscar..." type="text" />
+          <button id="boton" type="submit">
+            <i class="uil uil-search"></i>
+          </button>
+        </form>
+      </div>
+    </header>
+    <main class="store">
+      <section
+        id="contact"
+        class="contactUs wow animate__animated animate__slideInUp"
+      >
+        <div id="checkout__section" class="contact-container"></div>
+      </section>
+    </main>
+  </body>
+  <script src="js/functions.js" type="module"></script>
 </html>

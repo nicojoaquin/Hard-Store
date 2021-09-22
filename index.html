@@ -80,12 +80,21 @@
       </div>
     </header>
     <main id="tienda" class="container">
+      <div class="modal__container">
+        <article id="modal" class="checkout-modal">
+          <i
+            id="modalClose"
+            style="color: red; cursor: pointer"
+            class="fas fa-window-close fa-3x"
+          ></i>
+        </article>
+      </div>
       <div id="carScreen" class="car-screen">
         <h2>Agregue productos aquí...</h2>
         <div class="checkout-class">
-          <a href="checkout.html"
-            ><h3 style="color: rgb(243, 237, 237)">Ir al checkout:</h3></a
-          >
+          <button id="s" style="border: none; cursor: pointer">
+            <h3 style="color: rgb(243, 237, 237)">Ir al checkout:</h3>
+          </button>
         </div>
         <h3 id="total" style="color: black">Total: $0</h3>
         <hr />
