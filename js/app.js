@@ -3,12 +3,6 @@ import { queryFunction } from './query.js'
 
 showCar();
 
-
-
-
-
-
-
 //Variables
 const store = document.querySelector('.store__products');
 
