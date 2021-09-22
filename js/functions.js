@@ -5,8 +5,6 @@ import { addAlert, cantAlert } from './alerts.js'
 const store = document.querySelector('.store__products'),
       carScreen = document.querySelector('#carScreen'),
       counter = document.querySelector('#counter'),
-      car = document.querySelector('#car'),
-      form = document.querySelector('#finder'),
       input = document.querySelector('#input'),
       modal = document.querySelector('.modal__container');
       
@@ -15,10 +13,10 @@ let carrito = [];
 
 //Mostrar carrito
 const showCar = () => {
-car.addEventListener('click', () => {
+  document.querySelector('#car').addEventListener('click', () => {
   carScreen.classList.toggle('carShow');
   
-  if(carScreen.classList.contains('carShow')){
+  if(carScreen.classList.contains('carShow')) {
     document.body.style.overflowY = "hidden"
   } else {
     document.body.style.overflowY = "auto"
@@ -27,86 +25,23 @@ car.addEventListener('click', () => {
 }
 
 
-//Agrega al carrito al hacer click.
-const buyEvent = (dt) => {
-  
-  store.addEventListener('click', (e) =>{
-    if(e.target.id == dt.id){ 
-      
-      if (dt.stock > 0) {
-        const producto = e.target.parentElement.parentElement  
-        carrito.push(dt.price);                             //Agregamos el precio del producto, al array.
-        console.log(carrito)
+//Buscador
+const finder = (data) => {
 
-        addAlert(dt.name);
-        totalFunction(dt);
-        removeItem(dt)
-        stockSub(dt)
-        htmlCar(producto, dt)
-        addCartFunction(dt) 
-        modalCar()
-      } else {
-        cantAlert();
-        throw 'No hay mas stock!';
-      } 
-    } 
-  })
-
-}
-   
-  
-//Función que restan el stock del producto.    
-const stockSub = (dt) => dt.stock -= 1;   
-
-
-//Muestra el producto en el carrito.
-const htmlCar = (producto, dt) => {
-  const name = producto.querySelector('span').textContent
-  const precio = producto.querySelector('.price').textContent
-  
-  carScreen.innerHTML +=  `
-                            <div class = "carrito-div">
-                            <img class= "carrito-img" src="./assets/images/products/${producto.id}.jpg" alt="">
-                            <p class = "carrito-p">${name}
-                            <br />
-                            <span class = "carrito-price">${precio}<span>
-                            <br />
-                            <p>                                           
-                            <button><i id = "${dt.price}" class="fas fa-times-circle fa-2x"></i></button>              
-                            </div>
-                          `
-}
-
-
-//Function  que muestra el modal.
-const modalCar = () => {
-  
-  carScreen.addEventListener ('click', (e) => {
-  
-    if(e.target.localName.includes('h3')) {
-      carScreen.classList.remove('carShow');  //Cerramos el carrito al abrir el modal.
-      modal.style.transform = "scale(1)";                                                          
-    }
-
-    document.querySelector('#modalClose').addEventListener('click', () => { 
-      modal.style.transform = "scale(0)";
-      document.body.style.overflowY = "auto";
-    })
-  
+  document.querySelector('#finder').addEventListener('submit', (e) => {        //Busca la palabra escrita en el input.
+    e.preventDefault();  
+    const search = data.find ( prod => prod.id === input.value.toLowerCase())
+    console.log(search);
+    input.value = ''                              //Vacia el campo.
   })
 }
- 
-
-//Agregar al array del carrito.
-const addCartFunction = () =>  counter.textContent = carrito.length //El contador del icono es igual a la longitud del array.
 
 
 //Función que dibuja el total.
 const printTotal = () => {
   let total = carrito.reduce((a, b) => a + b, 0);   //Sacamos el total de los elementos del array.
 
-  const totalCounter = document.querySelector('#total')
-  totalCounter.textContent = `Total: $${ total }`         //Pintamos el total en el carrito y en el modal del checkout.
+  document.querySelector('#total').textContent = `Total: $${ total }`         //Pintamos el total en el carrito y en el modal del checkout.
   
   document.querySelector('.checkout-modal').innerHTML = `
                                                           <i
@@ -120,6 +55,7 @@ const printTotal = () => {
 
 //Sacamos el total del carrito a medida que agregamos productos.
 const totalFunction = (dt) => { 
+  document.querySelector('.checkout-class').style.display = "block"
   dt.inCart += 1
   printTotal()
 }
@@ -131,7 +67,7 @@ const removeItem = (dt) => {
   carScreen.addEventListener('click', (e) => {
     const  element = e.target.parentElement.parentElement.parentElement;
     
-    if( e.target.localName.includes('i')) {
+    if( e.target.classList.contains('removeIcon')) {
       dt.inCart -= 1
       carScreen.removeChild(element)         //Eliminamos el elemento del carrito, y restamos el contador.
       counter.textContent -= 1
@@ -156,20 +92,83 @@ const removeItem = (dt) => {
 }
 
 
-//Buscador
-const finder = (data) => {
+//Muestra el producto en el carrito.
+const htmlCar = (producto, dt) => {
+  const name = producto.querySelector('span').textContent
+  const precio = producto.querySelector('.price').textContent
+  
+  carScreen.innerHTML +=  `
+                            <div class = "carrito-div">
+                            <img class= "carrito-img" src="./assets/images/products/${producto.id}.jpg" alt="">
+                            <p class = "carrito-p">${name}
+                            <br />
+                            <span class = "carrito-price">${precio}<span>
+                            <br />
+                            <p>                                           
+                            <button><i id = "${dt.price}" class="fas fa-times-circle fa-2x removeIcon"></i></button>              
+                            </div>
+                          `
+}
 
-  form.addEventListener('submit', (e) => {        //Busca la palabra escrita en el input.
-    e.preventDefault();  
-    const search = data.find ( prod => prod.id === input.value.toLowerCase())
-    console.log(search);
-    input.value = ''                              //Vacia el campo.
+
+//Function  que muestra el modal.
+const modalCar = () => {
+  
+  carScreen.addEventListener ('click', (e) => {
+  
+    if(e.target.localName.includes('h3')) {
+      carScreen.classList.remove('carShow');  //Cerramos el carrito al abrir el modal.
+      modal.style.transform = "scale(1)";                                                          
+    }
+
+    document.querySelector('#modalClose').addEventListener('click', () => { 
+      modal.style.transform = "scale(0)";
+      document.body.style.overflowY = "auto";
+    })
+  
   })
 }
 
 
+//Agregar al array del carrito.
+const addCartFunction = () =>  counter.textContent = carrito.length //El contador del icono es igual a la longitud del array.
+
+
+//Función que restan el stock del producto.    
+const stockSub = (dt) => dt.stock -= 1; 
+
+
+//Agrega al carrito al hacer click.
+const buyEvent = (dt) => {
+  
+  store.addEventListener('click', (e) =>{
+    if(e.target.id == dt.id){ 
+      
+      if (dt.stock > 0) {
+        const producto = e.target.parentElement.parentElement  
+        carrito.push(dt.price);                             //Agregamos el precio del producto, al array.
+
+        addAlert(dt.name);
+        totalFunction(dt);
+        removeItem(dt)
+        htmlCar(producto, dt)
+        modalCar()
+        addCartFunction(dt) 
+        stockSub(dt)
+
+      } else {
+        cantAlert();
+        throw 'No hay mas stock!';
+      } 
+
+    } 
+  })
+
+}
+     
+
   export {
     showCar, 
-    buyEvent,
-    finder   
+    finder,
+    buyEvent
   }
