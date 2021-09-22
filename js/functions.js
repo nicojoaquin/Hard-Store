@@ -1,5 +1,7 @@
 import { addAlert, cantAlert } from './alerts.js'
 
+
+//Variables.
 const store = document.querySelector('.store__products'),
       carScreen = document.querySelector('#carScreen'),
       counter = document.querySelector('#counter'),
@@ -54,9 +56,7 @@ const buyEvent = (dt) => {
    
   
 //Función que restan el stock del producto.    
-const stockSub = (dt) => {
-  dt.stock -= 1;   
-}
+const stockSub = (dt) => dt.stock -= 1;   
 
 
 //Muestra el producto en el carrito.
@@ -64,17 +64,17 @@ const htmlCar = (producto, dt) => {
   const name = producto.querySelector('span').textContent
   const precio = producto.querySelector('.price').textContent
   
-  carScreen.innerHTML +=    `
-                <div class = "carrito-div">
-                <img class= "carrito-img" src="./assets/images/products/${producto.id}.jpg" alt="">
-                <p class = "carrito-p">${name}
-                <br />
-                <span class = "carrito-price">${precio}<span>
-                <br />
-                <p>                                           
-                <button><i id = "${dt.price}" class="fas fa-times-circle fa-2x"></i></button>              
-                </div>
-               `
+  carScreen.innerHTML +=  `
+                            <div class = "carrito-div">
+                            <img class= "carrito-img" src="./assets/images/products/${producto.id}.jpg" alt="">
+                            <p class = "carrito-p">${name}
+                            <br />
+                            <span class = "carrito-price">${precio}<span>
+                            <br />
+                            <p>                                           
+                            <button><i id = "${dt.price}" class="fas fa-times-circle fa-2x"></i></button>              
+                            </div>
+                          `
 }
 
 
@@ -98,27 +98,30 @@ const modalCar = () => {
  
 
 //Agregar al array del carrito.
-const addCartFunction = () => { counter.textContent = carrito.length} //El contador del icono es igual a la longitud del array.
+const addCartFunction = () =>  counter.textContent = carrito.length //El contador del icono es igual a la longitud del array.
+
+
+//Función que dibuja el total.
+const printTotal = () => {
+  let total = carrito.reduce((a, b) => a + b, 0);   //Sacamos el total de los elementos del array.
+
+  const totalCounter = document.querySelector('#total')
+  totalCounter.textContent = `Total: $${ total }`         //Pintamos el total en el carrito y en el modal del checkout.
+  
+  document.querySelector('.checkout-modal').innerHTML = `
+                                                          <i
+                                                          id="modalClose"
+                                                          style="color: red; cursor: pointer"
+                                                          class="fas fa-window-close fa-3x"></i>                                   
+                                                          <h1 style= "color: black">Total: $${total}</h1>
+                                                        `   
+}
 
 
 //Sacamos el total del carrito a medida que agregamos productos.
 const totalFunction = (dt) => { 
   dt.inCart += 1
-  let total = carrito.reduce((a, b) => a + b, 0);  //El total va a ser un nuevo array con la suma de todos sus elementos.
-
-  const totalCounter = document.querySelector('#total')    
-  totalCounter.textContent = `Total: $${ total }`       //Pintamos el total en el carrito y en el modal del checkout.                                               
-  
-  document.querySelector('.checkout-modal').innerHTML = `
-                                                        <i
-                                                        id="modalClose"
-                                                        style="color: red; cursor: pointer"
-                                                        class="fas fa-window-close fa-3x"></i>                                   
-                                                        <h1 style= "color: black">Total: $${total}</h1>
-                                                        `
-
-  document.querySelector('.checkout-class').style.display = "block"
-
+  printTotal()
 }
 
 
@@ -137,19 +140,8 @@ const removeItem = (dt) => {
 
         if (e.target.id == carrito[i]  ) {
           carrito.splice(i, 1)                 //Nuevo array que elimina los elementos elegidos
-          let total = carrito.reduce((a, b) => a + b, 0);   //Sacamos de vuelta el total.
+          printTotal()
 
-          const totalCounter = document.querySelector('#total')
-          totalCounter.textContent = `Total: $${ total }`         //Pintamos el total en el carrito y en el modal del checkout.
-          
-          document.querySelector('.checkout-modal').innerHTML = `
-                                                        <i
-                                                        id="modalClose"
-                                                        style="color: red; cursor: pointer"
-                                                        class="fas fa-window-close fa-3x"></i>                                   
-                                                        <h1 style= "color: black">Total: $${total}</h1>
-                                                        `    
-                                                        
           if(carrito.length == 0) {
             document.querySelector('.checkout-class').style.display = "none"
           }                                                                                            
@@ -158,6 +150,7 @@ const removeItem = (dt) => {
       }
          
     }
+
   })
 
 }
