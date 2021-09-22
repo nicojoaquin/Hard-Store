@@ -12,7 +12,7 @@ $('#nav__hamburger').click(function () {
     $('#ham').removeClass('uil uil-arrow-up').addClass('uil uil-bars');
   } 
   
-  item.click(function(){
+  $('.store__category--item').click(function(){
     $('.store__category').slideUp();
     $('#ham').removeClass('uil uil-bars').addClass('uil uil-arrow-up'); //Cambia icono y cierra el menu al pulsar el link
     $('#ham').removeClass('uil uil-arrow-up').addClass('uil uil-bars');
