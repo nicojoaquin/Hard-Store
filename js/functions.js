@@ -79,24 +79,20 @@ const formSend = () => {
 
 //Mensaje de compra.
 const message = (inputNombre, inputEmail) => {
+  
+  const checkoutModal = document.querySelector('.checkout-modal')
+  const template = document.querySelector('#template').content
+  const fragment = document.createDocumentFragment()
 
-  document.querySelector('.checkout-modal').innerHTML = `
-  <p class = "message" >
-  Gracias <span>${inputNombre.value}</span> por confiar en nosotros!
-  <br>
-  <br>
-  Te hemos enviado un correo a <span>${inputEmail.value}</span> para proceder con el pago.
-  </p>
-  <div class = "goBack">
-  <i
-  id="formClose"
-  class="fas fa-undo-alt" fa-4x">
-  </i>
-  </div>
-  <div class = "checked">
-  <img class= "checked-img" src="./assets/images/checked.png" alt="">
-  </div>
-  `
+  template.querySelector('#nameSpan').textContent = inputNombre.value
+  template.querySelector('#emailSpan').textContent = inputEmail.value
+
+  let clone = document.importNode(template, true) 
+  fragment.appendChild(clone)
+
+  checkoutModal.innerHTML = ""
+  checkoutModal.appendChild(fragment)
+
   setTimeout(() => {
     document.querySelector('.checked').style.opacity = 1
   },500)
