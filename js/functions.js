@@ -60,7 +60,7 @@ const formSend = () => {
     e.preventDefault()
     document.querySelector('#dataLoader').classList.add('loader-show') 
 
-    //Hacemos POST en la api de fornulario
+    //Hacemos POST en la api de formulario
     fetch(`https://formsubmit.co/ajax/nicojoaquin1998@gmail.com`, {
       method: "POST",
       body: new FormData(e.target)
