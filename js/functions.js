@@ -80,6 +80,7 @@ const formSend = () => {
 //Mensaje de compra.
 const message = (inputNombre, inputEmail) => {
   
+  //Aparece el mensaje de compra.
   const checkoutModal = document.querySelector('.checkout-modal')
   const template = document.querySelector('#template').content
   const fragment = document.createDocumentFragment()
@@ -87,9 +88,11 @@ const message = (inputNombre, inputEmail) => {
   template.querySelector('#nameSpan').textContent = inputNombre.value
   template.querySelector('#emailSpan').textContent = inputEmail.value
 
+  //Creamos un fragmento con el conenido del template(mensaje de compra).
   let clone = document.importNode(template, true) 
   fragment.appendChild(clone)
 
+  //Intercambiamos el contenido del formulario por el del mensaje.
   checkoutModal.innerHTML = ""
   checkoutModal.appendChild(fragment)
 
