@@ -70,4 +70,28 @@
     margin-bottom: 15px;
     margin-right: 50px;
   }
+  .checkout-modal {
+    border-radius: 0%;
+    height: 100vh;
+    width: 100%;
+  }
+  form fieldset legend {
+    font-size: 12px;
+  }
+  .form__fields label {
+    font-size: 15px;
+  }
+  .form__fields input {
+    padding: 4px;
+  }
+}
+@media screen and (min-width: 1710px) {
+  .metodos {
+    margin-left: 24%;
+  }
+}
+@media screen and (min-width: 1410px) and (max-width: 1650px) {
+  .metodos {
+    margin-left: 22%;
+  }
 }

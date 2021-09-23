@@ -414,7 +414,7 @@
 .checkout-modal {
   width: 80%;
   height: 80%;
-  background: #fff;
+  background: #e5e5e5;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.15);
 }
@@ -430,4 +430,119 @@
   left: 0;
   transition: 0.3s;
   transform: scale(0);
+}
+
+.modalShow {
+  transform: scale(1);
+  transition: 0.3s;
+}
+fieldset {
+  border: none;
+}
+form fieldset legend {
+  text-align: center;
+}
+.form__fields {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.form__fields label {
+  color: #050505;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.form__fields input {
+  border-radius: 5px;
+  padding: 10px;
+  border: blanchedalmond;
+  font-family: sans-serif;
+}
+.form__fields input::placeholder {
+  font-family: sans-serif;
+}
+.metodos {
+  margin-left: 21%;
+}
+.metodos label {
+  color: #050505;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.form__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.form__buttons button,
+.form__buttons input {
+  height: 40px;
+  width: 100px;
+  font-family: sans-serif;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+.reset__button {
+  background: red;
+}
+.pay__button {
+  background: rgb(99, 194, 4);
+}
+.reset__button:hover {
+  background: rgb(179, 22, 22);
+}
+.pay__button:hover {
+  background: rgb(93, 180, 6);
+}
+.message {
+  font-size: 25px;
+  text-align: center;
+  font-family: sans-serif;
+  color: #050505;
+  font-weight: 500;
+  line-height: 40px;
+  padding: 20px;
+}
+.message span {
+  font-weight: bold;
+  color: rgb(7, 43, 83);
+}
+.fa-undo-alt {
+  color: green;
+  text-align: center;
+  cursor: pointer;
+}
+.fa-undo-alt::after {
+  content: "Volver atras";
+  cursor: pointer;
+  font-size: 20px;
+}
+.goBack {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.loader-container {
+  display: flex;
+  justify-content: center;
+}
+.loader {
+  display: none;
+}
+.loader-show {
+  display: block;
+}
+.checked {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  opacity: 0;
+  transition: 0.2s;
+}
+.checked-img {
+  width: 35%;
+  max-width: 200px;
 }

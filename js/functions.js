@@ -38,18 +38,73 @@ const finder = (data) => {
 
 
 //Función que dibuja el total.
-const printTotal = () => {
+const printTotal = (dt) => {
   let total = carrito.reduce((a, b) => a + b, 0);   //Sacamos el total de los elementos del array.
 
   document.querySelector('#total').textContent = `Total: $${ total }`         //Pintamos el total en el carrito y en el modal del checkout.
   
+  document.querySelector('#formTotal').textContent = `Total: $${ total }`
+  
+  formSend()
+}
+
+
+//Formulario de compra.
+const formSend = () => {
+
+  const inputNombre = formulario.nombre
+  const inputEmail = formulario.email
+
+  document.querySelector('#formulario').addEventListener('submit', (e) => {
+
+    e.preventDefault()
+    document.querySelector('#dataLoader').classList.add('loader-show') 
+
+    //Hacemos POST en la api de fornulario
+    fetch(`https://formsubmit.co/ajax/nicojoaquin1998@gmail.com`, {
+      method: "POST",
+      body: new FormData(e.target)
+    })
+    .then(res => res.ok? res.json : Promise.reject(res))
+    .then(json => {    
+
+      message(inputNombre, inputEmail)   
+    })
+    .catch(console.warn)
+    
+  })
+
+}
+
+
+//Mensaje de compra.
+const message = (inputNombre, inputEmail) => {
+
   document.querySelector('.checkout-modal').innerHTML = `
-                                                          <i
-                                                          id="modalClose"
-                                                          style="color: red; cursor: pointer"
-                                                          class="fas fa-window-close fa-3x"></i>                                   
-                                                          <h1 style= "color: black">Total: $${total}</h1>
-                                                        `   
+  <p class = "message" >
+  Gracias <span>${inputNombre.value}</span> por confiar en nosotros!
+  <br>
+  <br>
+  Te hemos enviado un correo a <span>${inputEmail.value}</span> para proceder con el pago.
+  </p>
+  <div class = "goBack">
+  <i
+  id="formClose"
+  class="fas fa-undo-alt" fa-4x">
+  </i>
+  </div>
+  <div class = "checked">
+  <img class= "checked-img" src="./assets/images/checked.png" alt="">
+  </div>
+  `
+  setTimeout(() => {
+    document.querySelector('.checked').style.opacity = 1
+  },500)
+
+  document.querySelector('#formClose').addEventListener('click' , () => {
+    location.href = "../index.html";
+  })
+
 }
 
 
@@ -57,7 +112,7 @@ const printTotal = () => {
 const totalFunction = (dt) => { 
   document.querySelector('.checkout-class').style.display = "block"
   dt.inCart += 1
-  printTotal()
+  printTotal(dt)
 }
 
 
@@ -76,11 +131,11 @@ const removeItem = (dt) => {
 
         if (e.target.id == carrito[i]  ) {
           carrito.splice(i, 1)                 //Nuevo array que elimina los elementos elegidos
-          printTotal()
+          printTotal(dt)
 
           if(carrito.length == 0) {
             document.querySelector('.checkout-class').style.display = "none"
-          }                                                                                            
+          }                                                                       
         }
 
       }
@@ -118,16 +173,19 @@ const modalCar = () => {
   
     if(e.target.localName.includes('h3')) {
       carScreen.classList.remove('carShow');  //Cerramos el carrito al abrir el modal.
-      modal.style.transform = "scale(1)";                                                          
+      modal.classList.add('modalShow') 
     }
 
     document.querySelector('#modalClose').addEventListener('click', () => { 
-      modal.style.transform = "scale(0)";
+      modal.classList.remove('modalShow')
       document.body.style.overflowY = "auto";
-    })
+   })
   
   })
+  
 }
+
+
 
 
 //Agregar al array del carrito.
