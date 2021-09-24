@@ -44,40 +44,58 @@
   </head>
 
   <body>
+
+    <div id="mainMenu" class="sideBar">
+      <ul>
+        <div id="newBar" class="fas fa-times fa-lg"></div>
+        <li class="About"><a href="#about">About us</a></li>
+        <li class="Contact"><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
     <header class="header">
-      <div id="mainBars" class="bars">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div id="mainMenu" class="sideBar">
-        <ul>
-          <div id="newBar" class="fas fa-times fa-lg"></div>
-          <li class="About"><a href="#about">About us</a></li>
-          <li class="Contact"><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="titleAndSearch">
-        <div class="titulo">
-          <a href="index.html"> <h1 class="titulo__h1 link">Hard Store</h1></a>
-          <img
+
+      <div class="header__container">
+
+        <div class="title-nav">
+          
+          <div id="mainBars" class="bars">
+            
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          
+          <div class="titulo">
+            <a href="index.html"><h1 class="titulo__h1 link">Hard Store</h1></a>
+            <img
             src="./assets/images/logo.ico"
             alt="titulo__logo"
             height="60px"
             width="60px"
-          />
+            />
+          </div>
+
         </div>
-        <form class="buscador" id="finder">
-          <input id="input" placeholder="Buscar..." type="text" />
-          <button id="boton" type="submit">
-            <i class="uil uil-search"></i>
-          </button>
-        </form>
+
+        <div class="finder-cart">
+          
+          <form class="buscador" id="finder">
+            <input id="input" placeholder="Buscar..." type="text" />
+            <button id="boton" type="submit">
+              <i class="uil uil-search"></i>
+            </button>
+          </form>
+          
+          <div id="car" class="shopCar">
+            <i class="fas fa-cart-arrow-down fa-2x"></i>
+            <span id="counter">0</span>
+          </div>
+
+        </div>
+
       </div>
-      <div id="car" class="shopCar">
-        <i class="fas fa-cart-arrow-down fa-2x"></i>
-        <span id="counter">0</span>
-      </div>
+
     </header>
     <main id="tienda" class="container">
       <div class="modal__container">
