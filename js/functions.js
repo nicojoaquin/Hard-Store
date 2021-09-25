@@ -58,6 +58,7 @@ const formSend = () => {
   document.querySelector('#formulario').addEventListener('submit', (e) => {
 
     e.preventDefault()
+    document.querySelector('.total-button').style.display = "none"
     document.querySelector('#dataLoader').classList.add('loader-show') 
 
     //Hacemos POST en la api de formulario
@@ -67,7 +68,6 @@ const formSend = () => {
     })
     .then(res => res.ok? res.json : Promise.reject(res))
     .then(json => {    
-
       message(inputNombre, inputEmail)   
     })
     .catch(console.warn)

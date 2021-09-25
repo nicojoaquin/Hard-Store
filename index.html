@@ -102,8 +102,8 @@
         <article id="modal" class="checkout-modal">
           <i
           id="modalClose"
-          style="color: red; cursor: pointer"
-          class="fas fa-window-close fa-3x">
+          style="color: rgb(10, 5, 5); cursor: pointer; margin: 5px;"
+          class="fas fa-times-circle fa-2x">
           </i>  
 
           <div class="form"></div>
@@ -155,16 +155,17 @@
                   <br>
                   <br>
                 </div>
-                          
-                <div class="form__buttons">
-                  <button class="reset__button" type="reset">Vaciar campos</button>                 
-                  <input type="submit" value="Ir a pagar" class="pay__button">
-                  </div>
-                  <br>
+                
+                <div class="total-button">
                   <h3 id=formTotal style = "color: black; text-align: center"></h3>
-                  <div class="loader-container">  
-                    <img id="dataLoader" class="loader" src="/assets/loader.gif" alt="loader"> 
+                  <br>               
+                  <div class="form__buttons">                 
+                    <input type="submit" value="Ir a pagar" class="pay__button">
                   </div>
+                </div>
+
+                <div class="loader-container">  
+                  <img id="dataLoader" class="loader" src="/assets/loader.gif"  alt="loader"> 
                 </div>
                           
               </fieldset>
@@ -182,7 +183,7 @@
               <div class = "goBack">
                 <i
                 id="formClose"
-                class="fas fa-undo-alt fa-4x">
+                class="fas fa-undo-alt fa-2x">
               </i>
             </div>
             <div class = "checked">
