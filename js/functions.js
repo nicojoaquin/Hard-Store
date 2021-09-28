@@ -1,12 +1,11 @@
 import { addAlert, cantAlert } from './alerts.js'
 
-
 //Variables.
 const store = document.querySelector('.store__products'),
       carScreen = document.querySelector('#carScreen'),
       counter = document.querySelector('#counter'),
       input = document.querySelector('#input'),
-      modal = document.querySelector('.modal__container');
+      modal = document.querySelector('.modal__container')
 let carrito = [];  
 
 //Mostrar carrito
@@ -46,9 +45,6 @@ const loadhtml = (dt) => {
                                 <button id="s" style="border: none; cursor: pointer">
                                   <h3 style="color: rgb(243, 237, 237)">Ir al checkout</h3>
                                 </button>
-                                <button id="s" style="border: none; cursor: pointer">
-                                  <h4 class="vaciarCarrito" style="color: rgb(243, 237, 237)">Vaciar carrito</h4>
-                                </button>
                               </div>
                               <h3 id="total" style="color: black">Total: $0</h3>
                               <hr />
@@ -69,11 +65,11 @@ const loadhtml = (dt) => {
                                   <button><i id = "${item.price}" class="fas fa-times-circle fa-2x removeIcon"></i></button>              
                                 </div>
                                 `
-                                                            
-                                document.querySelector('.checkout-class').style.display = "block"
-                            
-                                document.querySelector('#total').textContent = `Total: $${ cartCost  }`   //Pintamos el total en el carrito y en el modal del checkout.                       
-                                document.querySelector('#formTotal').textContent = `Total: $${ cartCost  }` 
+                                
+      document.querySelector('.checkout-class').style.display = "block" 
+                                                                                     
+      document.querySelector('#total').textContent = `Total: $${ cartCost  }`   //Pintamos el total en el carrito y en el modal del checkout.                       
+      document.querySelector('#formTotal').textContent = `Total: $${ cartCost  }` 
                                 
     })
 
@@ -108,6 +104,7 @@ const formSend = () => {
   document.querySelector('#formulario').addEventListener('submit', (e) => {
 
     e.preventDefault()
+    document.querySelector('.total-button').style.display = "none"
     document.querySelector('#dataLoader').classList.add('loader-show') 
 
     //Hacemos POST en la api de formulario
@@ -116,8 +113,7 @@ const formSend = () => {
       body: new FormData(e.target)
     })
     .then(res => res.ok? res.json : Promise.reject(res))
-    .then(json => {    
-
+    .then(json => { 
       message(inputNombre, inputEmail)   
     })
     .catch(console.warn)
@@ -183,13 +179,24 @@ const removeItem = (dt) => {
 
   carScreen.addEventListener('click', (e) => {
     let element = e.target.parentElement.parentElement.parentElement
-    
+    let cartItems =  JSON.parse(sessionStorage.getItem('productsInCart'));
+
+    cartItems = {
+        ...cartItems,
+        [dt.id]: dt
+      }
+
     if(e.target.id == dt.price) {
       
       for ( let i = 0; i < carrito.length; i++) {
         
         if (e.target.id == carrito[i]  ) {
           carrito.splice(i , 1)
+          
+          sessionStorage.setItem('cart', carrito.length);
+          let productNumbers = parseInt(sessionStorage.getItem("cart"));
+          counter.textContent = productNumbers 
+
           let total = carrito.reduce((a, b) => a + b, 0)
           
           sessionStorage.setItem('totalCost', total)
@@ -198,15 +205,19 @@ const removeItem = (dt) => {
           document.querySelector('#total').textContent = `Total: $${ cartCost  }`  
           document.querySelector('#formTotal').textContent = `Total: $${ cartCost  }`
         }
-        
+
+        if(carrito.length == 0) {
+          document.querySelector('.checkout-class').style.display = "none" 
+        }
+
       }
-      
+
+      cartItems[dt.id].inCart = 0
+      delete cartItems[dt.id]
+      sessionStorage.setItem('productsInCart', JSON.stringify(cartItems))
+
     }
     carScreen.removeChild(element)
-    
-    let productNumbers = parseInt(sessionStorage.getItem("cart"));
-    sessionStorage.setItem('cart', productNumbers - 1);
-    counter.textContent = productNumbers - 1
 
   })
 
@@ -216,16 +227,15 @@ const removeItem = (dt) => {
 //Function  que muestra el modal.
 const modalCar = () => {
   
-  carScreen.addEventListener ('click', (e) => {
+  document.querySelector('.checkout-class').addEventListener ('click', (e) => {
   
-    if(e.target.localName.includes('h3')) {
+    
       carScreen.classList.remove('carShow');  //Cerramos el carrito al abrir el modal.
       modal.classList.add('modalShow') 
-    }
+    
 
     document.querySelector('#modalClose').addEventListener('click', () => { 
       modal.classList.remove('modalShow')
-      location.reload()
    })
   
   })

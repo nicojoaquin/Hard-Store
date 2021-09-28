@@ -60,6 +60,7 @@
 }
 .sideBar.menuShow {
   transition: left 0.3s;
+  z-index: 1000;
   left: 0;
 }
 #newBar {
