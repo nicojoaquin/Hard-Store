@@ -1,4 +1,4 @@
-import  {showCar, buyEvent, finder } from './functions.js'
+import  {showCar, buyEvent, finder, loadCart, loadhtml} from './functions.js'
 import { queryFunction } from './query.js'
 
 
@@ -65,7 +65,7 @@ const getALL = async () => {
     .then( data => {
       createApi()
       data.map(dt => {
-        create(dt)   
+        create(dt)
         
       })
       
@@ -82,5 +82,9 @@ const getALL = async () => {
 
 document.addEventListener('DOMContentLoaded', getALL)
 showCar();
+loadCart();
+loadhtml();
 
-
+window.onbeforeunload = (e) => {
+  sessionStorage.clear()
+};
