@@ -7,9 +7,7 @@ const store = document.querySelector('.store__products'),
       counter = document.querySelector('#counter'),
       input = document.querySelector('#input'),
       modal = document.querySelector('.modal__container');
-      
-let carrito = [];
-
+let carrito = [];  
 
 //Mostrar carrito
 const showCar = () => {
@@ -37,15 +35,67 @@ const finder = (data) => {
 }
 
 
-//Función que dibuja el total.
-const printTotal = (dt) => {
-  let total = carrito.reduce((a, b) => a + b, 0);   //Sacamos el total de los elementos del array.
+const loadhtml = (dt) => {
+  let cartItems =  JSON.parse(sessionStorage.getItem('productsInCart'));
+  let cartCost = parseInt(sessionStorage.getItem("totalCost"))
 
-  document.querySelector('#total').textContent = `Total: $${ total }`         //Pintamos el total en el carrito y en el modal del checkout.
-  
-  document.querySelector('#formTotal').textContent = `Total: $${ total }`
-  
-  formSend()
+  if (cartItems && carScreen) {
+    carScreen.innerHTML = ` 
+                              <h2>Agregue productos aquí...</h2>
+                              <div class="checkout-class">
+                                <button id="s" style="border: none; cursor: pointer">
+                                  <h3 style="color: rgb(243, 237, 237)">Ir al checkout</h3>
+                                </button>
+                                <button id="s" style="border: none; cursor: pointer">
+                                  <h4 class="vaciarCarrito" style="color: rgb(243, 237, 237)">Vaciar carrito</h4>
+                                </button>
+                              </div>
+                              <h3 id="total" style="color: black">Total: $0</h3>
+                              <hr />
+                          `
+    Object.values(cartItems).map(item => {
+      
+      carScreen.innerHTML +=  `
+                                <div class = "carrito-div">
+                                  <img class= "carrito-img" src="./assets/images/products/${item.id}.jpg" alt="">
+                                  <p class = "carrito-p">${item.name}
+                                    <br />
+                                    $${item.price}
+                                    x${item.inCart}
+                                    <br />
+                                    <span class = "carrito-price">$${item.inCart * item.price}<span>       
+                                    <br />
+                                  <p>                                           
+                                  <button><i id = "${item.price}" class="fas fa-times-circle fa-2x removeIcon"></i></button>              
+                                </div>
+                                `
+                                                            
+                                document.querySelector('.checkout-class').style.display = "block"
+                            
+                                document.querySelector('#total').textContent = `Total: $${ cartCost  }`   //Pintamos el total en el carrito y en el modal del checkout.                       
+                                document.querySelector('#formTotal').textContent = `Total: $${ cartCost  }` 
+                                
+    })
+
+  }
+}
+
+
+//Función que dibuja el total.
+const printTotal = (dt) => { 
+  let cartItems = JSON.parse(sessionStorage.getItem('productsInCart'));
+  let cart = sessionStorage.getItem("totalCost");
+
+  if(cart != null) {
+    
+    cart = parseInt(cart);
+    sessionStorage.setItem("totalCost", cart + cartItems[dt.id].price);
+    
+  } else {
+    sessionStorage.setItem("totalCost", cartItems[dt.id].price);
+  }
+
+formSend()
 }
 
 
@@ -58,7 +108,6 @@ const formSend = () => {
   document.querySelector('#formulario').addEventListener('submit', (e) => {
 
     e.preventDefault()
-    document.querySelector('.total-button').style.display = "none"
     document.querySelector('#dataLoader').classList.add('loader-show') 
 
     //Hacemos POST en la api de formulario
@@ -68,6 +117,7 @@ const formSend = () => {
     })
     .then(res => res.ok? res.json : Promise.reject(res))
     .then(json => {    
+
       message(inputNombre, inputEmail)   
     })
     .catch(console.warn)
@@ -101,69 +151,67 @@ const message = (inputNombre, inputEmail) => {
   },500)
 
   document.querySelector('#formClose').addEventListener('click' , () => {
-    location.href = "../index.html";
+    location.reload()
   })
 
 }
 
 
-//Sacamos el total del carrito a medida que agregamos productos.
-const totalFunction = (dt) => { 
-  document.querySelector('.checkout-class').style.display = "block"
-  dt.inCart += 1
-  printTotal(dt)
-}
-
-
-//Eliminar articulo del carrito.
-const removeItem = (dt) => {  
-
-  carScreen.addEventListener('click', (e) => {
-    const  element = e.target.parentElement.parentElement.parentElement;
-    
-    if( e.target.classList.contains('removeIcon')) {
-      dt.inCart -= 1
-      carScreen.removeChild(element)         //Eliminamos el elemento del carrito, y restamos el contador.
-      counter.textContent -= 1
-
-      for ( let i = 0; i < carrito.length; i++) {
-
-        if (e.target.id == carrito[i]  ) {
-          carrito.splice(i, 1)                 //Nuevo array que elimina los elementos elegidos
-          printTotal(dt)
-
-          if(carrito.length == 0) {
-            document.querySelector('.checkout-class').style.display = "none"
-          }                                                                       
-        }
-
+const cartStorage = (dt) => {
+  let cartItems = JSON.parse(sessionStorage.getItem('productsInCart'))
+        
+  if(cartItems != null) {
+    if(cartItems[dt.id] == undefined) {
+      cartItems = {
+        ...cartItems,
+        [dt.id]: dt
       }
-         
+    }
+    cartItems[dt.id].inCart += 1
+  } else {
+    dt.inCart = 1
+    cartItems = {
+      [dt.id]: dt
     }
 
+  }
+  sessionStorage.setItem('productsInCart', JSON.stringify(cartItems))
+}
+
+
+const removeItem = (dt) => {
+
+  carScreen.addEventListener('click', (e) => {
+    let element = e.target.parentElement.parentElement.parentElement
+    
+    if(e.target.id == dt.price) {
+      
+      for ( let i = 0; i < carrito.length; i++) {
+        
+        if (e.target.id == carrito[i]  ) {
+          carrito.splice(i , 1)
+          let total = carrito.reduce((a, b) => a + b, 0)
+          
+          sessionStorage.setItem('totalCost', total)
+          let cartCost = JSON.parse(sessionStorage.getItem('totalCost'))
+          
+          document.querySelector('#total').textContent = `Total: $${ cartCost  }`  
+          document.querySelector('#formTotal').textContent = `Total: $${ cartCost  }`
+        }
+        
+      }
+      
+    }
+    carScreen.removeChild(element)
+    
+    let productNumbers = parseInt(sessionStorage.getItem("cart"));
+    sessionStorage.setItem('cart', productNumbers - 1);
+    counter.textContent = productNumbers - 1
+
   })
 
 }
-
-
-//Muestra el producto en el carrito.
-const htmlCar = (producto, dt) => {
-  const name = producto.querySelector('span').textContent
-  const precio = producto.querySelector('.price').textContent
-  
-  carScreen.innerHTML +=  `
-                            <div class = "carrito-div">
-                            <img class= "carrito-img" src="./assets/images/products/${producto.id}.jpg" alt="">
-                            <p class = "carrito-p">${name}
-                            <br />
-                            <span class = "carrito-price">${precio}<span>
-                            <br />
-                            <p>                                           
-                            <button><i id = "${dt.price}" class="fas fa-times-circle fa-2x removeIcon"></i></button>              
-                            </div>
-                          `
-}
-
+ 
 
 //Function  que muestra el modal.
 const modalCar = () => {
@@ -177,7 +225,7 @@ const modalCar = () => {
 
     document.querySelector('#modalClose').addEventListener('click', () => { 
       modal.classList.remove('modalShow')
-      document.body.style.overflowY = "auto";
+      location.reload()
    })
   
   })
@@ -185,10 +233,27 @@ const modalCar = () => {
 }
 
 
+const addCartFunction = (dt) => {
+  
+  let productNumbers = parseInt(sessionStorage.getItem("cart"));  //Almacenamos el valor del storage. 
 
+  if(productNumbers){
+    sessionStorage.setItem('cart', productNumbers + 1); //Si ya existe el valor, al hacer click, se suma uno.
+    counter.textContent = productNumbers + 1
+  } else{
+    sessionStorage.setItem('cart', 1);  //Obtenemos del storage la cantidad 1 en el carrito al crear el storage.
+    counter.textContent = 1;
+  }
+}
+  
+const loadCart = (dt) => {  //Al recargar la pagina, sigue el valor del carrito con el mismo valor del storage.
+  let productNumbers = parseInt(sessionStorage.getItem("cart"));
 
-//Agregar al array del carrito.
-const addCartFunction = () =>  counter.textContent = carrito.length //El contador del icono es igual a la longitud del array.
+  if(productNumbers ) {
+  counter.textContent = productNumbers;
+  }
+  
+}
 
 
 //Función que restan el stock del producto.    
@@ -198,34 +263,38 @@ const stockSub = (dt) => dt.stock -= 1;
 //Agrega al carrito al hacer click.
 const buyEvent = (dt) => {
   
+  
   store.addEventListener('click', (e) =>{
     if(e.target.id == dt.id){ 
       
       if (dt.stock > 0) {
-        const producto = e.target.parentElement.parentElement  
-        carrito.push(dt.price);                             //Agregamos el precio del producto, al array.
-
+        carrito.push(dt.price)
+        sessionStorage.setItem('carrito', JSON.stringify(carrito))
+        
         addAlert(dt.name);
-        totalFunction(dt);
-        removeItem(dt)
-        htmlCar(producto, dt)
-        modalCar()
         addCartFunction(dt) 
-        stockSub(dt)
-
+        cartStorage(dt)
+        removeItem(dt)
+        printTotal(dt)
+        loadhtml(dt)
+        modalCar()
+        stockSub(dt)  
+        
       } else {
         cantAlert();
         throw 'No hay mas stock!';
       } 
-
+      
     } 
   })
-
+  
 }
      
 
   export {
     showCar, 
     finder,
-    buyEvent
+    buyEvent,
+    loadCart,
+    loadhtml
   }
