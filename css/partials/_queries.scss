@@ -5,7 +5,7 @@
     height: 120px;
   }
   .bars {
-    margin-top: 35px;
+    margin-top: 5px;
     left: 10px;
   }
   .sideBar {
@@ -18,15 +18,17 @@
     align-items: center;
     justify-content: space-evenly;
     gap: 100px;
-
     list-style-type: none;
   }
   .newBody {
     margin-left: 0;
   }
+  .titulo__h1 {
+    padding-top: 10px;
+  }
   .titulo img {
     padding-right: 50px;
-    width: 100px;
+    width: 10%;
   }
   .shopCar {
     position: absolute;
@@ -83,6 +85,9 @@
   }
   .form__fields input {
     padding: 4px;
+  }
+  .message {
+    font-size: 20px;
   }
 }
 @media screen and (min-width: 1710px) {

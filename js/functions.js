@@ -4,9 +4,9 @@ import { addAlert, cantAlert } from './alerts.js'
 const store = document.querySelector('.store__products'),
       carScreen = document.querySelector('#carScreen'),
       counter = document.querySelector('#counter'),
-      input = document.querySelector('#input'),
       modal = document.querySelector('.modal__container')
 let carrito = [];  
+
 
 //Mostrar carrito
 const showCar = () => {
@@ -22,22 +22,11 @@ const showCar = () => {
 }
 
 
-//Buscador
-const finder = (data) => {
-
-  document.querySelector('#finder').addEventListener('submit', (e) => {        //Busca la palabra escrita en el input.
-    e.preventDefault();  
-    const search = data.find ( prod => prod.id === input.value.toLowerCase())
-    console.log(search);
-    input.value = ''                              //Vacia el campo.
-  })
-}
-
-
 const loadhtml = (dt) => {
   let cartItems =  JSON.parse(sessionStorage.getItem('productsInCart'));
   let cartCost = parseInt(sessionStorage.getItem("totalCost"))
 
+  //Hace aparecer a los productos seleccionados en el carrito.
   if (cartItems && carScreen) {
     carScreen.innerHTML = ` 
                               <h2>Agregue productos aquí...</h2>
@@ -67,7 +56,8 @@ const loadhtml = (dt) => {
                                 `
                                 
       document.querySelector('.checkout-class').style.display = "block" 
-                                                                                     
+      
+      //Dibujamos el total.
       document.querySelector('#total').textContent = `Total: $${ cartCost  }`   //Pintamos el total en el carrito y en el modal del checkout.                       
       document.querySelector('#formTotal').textContent = `Total: $${ cartCost  }` 
                                 
@@ -78,7 +68,7 @@ const loadhtml = (dt) => {
 
 
 //Función que dibuja el total.
-const printTotal = (dt) => { 
+const totalCalc = (dt) => { 
   let cartItems = JSON.parse(sessionStorage.getItem('productsInCart'));
   let cart = sessionStorage.getItem("totalCost");
 
@@ -285,7 +275,7 @@ const buyEvent = (dt) => {
         addCartFunction(dt) 
         cartStorage(dt)
         removeItem(dt)
-        printTotal(dt)
+        totalCalc(dt)
         loadhtml(dt)
         modalCar()
         stockSub(dt)  
@@ -303,7 +293,6 @@ const buyEvent = (dt) => {
 
   export {
     showCar, 
-    finder,
     buyEvent,
     loadCart,
     loadhtml
