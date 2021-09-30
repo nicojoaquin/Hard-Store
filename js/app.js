@@ -1,28 +1,52 @@
-import  {showCar, buyEvent, finder, loadCart, loadhtml} from './functions.js'
+import  {showCar, buyEvent, loadCart, loadhtml} from './functions.js'
 import { queryFunction } from './query.js'
 
 
 //Variables
-const store = document.querySelector('.store__products');
-
+const store = document.querySelector('.store__products'),
+      input = document.querySelector('#input')
 
 //Creamos los elementos que iran adentro de la tienda.
 const create = (dt) => {
-  
-  store.innerHTML +=  `
+
+  let html =  `
                         <div class="store__products--item" id="${dt.id}" category="${dt.cat}">
                           <img class="imgClass" src="./assets/images/products/${dt.id}.jpg">
-                          <p> <span>${dt.name}</span> <br> <span class = "price">$${dt.price}</span></p>
+                          <p class="product-name"> <span>${dt.name}</span> <br> <span class = "price">$${dt.price}</span></p>
                           <div class="card-container">${dt.desc}
                             <hr>
                             <i class="addCart fas fa-cart-plus fa-3x" id="${dt.id}"></i>
                           </div>
                         </div>
                       ` 
-  
-  buyEvent(dt)
 
+
+ store.innerHTML += html
+
+ 
+ buyEvent(dt)
+ 
 }
+
+//Función de búsqueda
+const finder = () => {
+
+  input.addEventListener('keyup', (e) => {      
+    
+    //Si la palabra/letra del input no coincide con el inner del producto, lo desaparece.
+    document.querySelectorAll('.store__products--item').forEach(el =>  
+
+      (el.textContent.toLowerCase().includes(e.target.value)) 
+      ? el.setAttribute("style", "visibility:visible; transform: scale(1); transition: 0.5s;")
+      : el.setAttribute("style", "visibility:hidden; transform: scale(0); order:1; transition: 0.5s;") 
+
+      ) 
+
+  })
+  
+}
+
+
 //Crear un nuevo producto.
 const getALL = async () => {
   const URLJSON  = "https://my-json-server.typicode.com/nicojoaquin/fakeAPI/articulos"
@@ -47,7 +71,6 @@ const getALL = async () => {
     fetch(URLJSON, options)
     .then((resp) => resp.json())
     .then( data => {
-    
       create(data)
       queryFunction()   
     
@@ -65,12 +88,8 @@ const getALL = async () => {
     .then( data => {
       createApi()
       data.map(dt => {
-        create(dt)
-        
-      })
-      
-      finder(data)
-      
+        create(dt)      
+      }) 
     })
     
   }
@@ -80,10 +99,12 @@ const getALL = async () => {
 }
 
 
+
 document.addEventListener('DOMContentLoaded', getALL)
 showCar();
 loadCart();
 loadhtml();
+finder()
 
 window.onbeforeunload = (e) => {
   sessionStorage.clear()
