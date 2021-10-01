@@ -1,7 +1,6 @@
 //Variables.
 const main = document.body;
 const mainBars = document.querySelector('#mainBars'),
-      newBars = document.querySelector('#newBar'),
       menu = document.querySelector('#mainMenu');  
 
 
@@ -23,10 +22,11 @@ const close = () => {
   mainBars.classList.add('bars');
   main.style.overflow="auto"
 }
-newBars.addEventListener('click', close)
+document.querySelector('#newBar').addEventListener('click', close)
+
 
 menu.addEventListener('click', (e) => {
-  if(e.target.tagName === 'A'){
+  if(e.target.tagName === 'A'){   //Al seleccionar un link del menu, este se cierra.
     close()
   } 
 })

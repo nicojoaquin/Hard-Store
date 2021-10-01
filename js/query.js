@@ -1,7 +1,3 @@
-
-//Variables
-
-
 //Responsive menu 
 $('#nav__hamburger').click(function () {
   $('.store__category').slideToggle(); //Se desplaza el menu
@@ -11,6 +7,7 @@ $('#nav__hamburger').click(function () {
   } else {
     $('#ham').removeClass('uil uil-arrow-up').addClass('uil uil-bars');
   } 
+  
   
   $('.store__category--item').click(function(){
     $('.store__category').slideUp();
