@@ -11,6 +11,7 @@ let carrito = [];
 //Mostrar carrito
 const showCar = () => {
   document.querySelector('#car').addEventListener('click', () => {
+
   carScreen.classList.toggle('carShow');
   
   if(carScreen.classList.contains('carShow')) {
@@ -22,66 +23,22 @@ const showCar = () => {
 }
 
 
-const loadhtml = (dt) => {
-  let cartItems =  JSON.parse(sessionStorage.getItem('productsInCart'));
-  let cartCost = parseInt(sessionStorage.getItem("totalCost"))
-
-  //Hace aparecer a los productos seleccionados en el carrito.
-  if (cartItems && carScreen) {
-    carScreen.innerHTML = ` 
-                              <h2>Agregue productos aquí...</h2>
-                              <div class="checkout-class">
-                                <button id="s" style="border: none; cursor: pointer">
-                                  <h3 style="color: rgb(243, 237, 237)">Ir al checkout</h3>
-                                </button>
-                              </div>
-                              <h3 id="total" style="color: black">Total: $0</h3>
-                              <hr />
-                          `
-    Object.values(cartItems).map(item => {
-      
-      carScreen.innerHTML +=  `
-                                <div class = "carrito-div">
-                                  <img class= "carrito-img" src="./assets/images/products/${item.id}.jpg" alt="">
-                                  <p class = "carrito-p">${item.name}
-                                    <br />
-                                    $${item.price}
-                                    x${item.inCart}
-                                    <br />
-                                    <span class = "carrito-price">$${item.inCart * item.price}<span>       
-                                    <br />
-                                  <p>                                           
-                                  <button><i id = "${item.price}" class="fas fa-times-circle fa-2x removeIcon"></i></button>              
-                                </div>
-                                `
-                                
-      document.querySelector('.checkout-class').style.display = "block" 
-      
-      //Dibujamos el total.
-      document.querySelector('#total').textContent = `Total: $${ cartCost  }`   //Pintamos el total en el carrito y en el modal del checkout.                       
-      document.querySelector('#formTotal').textContent = `Total: $${ cartCost  }` 
-                                
-    })
-
-  }
-}
-
-
-//Función que dibuja el total.
-const totalCalc = (dt) => { 
-  let cartItems = JSON.parse(sessionStorage.getItem('productsInCart'));
-  let cart = sessionStorage.getItem("totalCost");
-
-  if(cart != null) {
+//Function  que muestra el modal.
+const modalCar = () => {
+  
+  document.querySelector('.checkout-class').addEventListener ('click', (e) => {
+  
     
-    cart = parseInt(cart);
-    sessionStorage.setItem("totalCost", cart + cartItems[dt.id].price);
+      carScreen.classList.remove('carShow');  //Cerramos el carrito al abrir el modal.
+      modal.classList.add('modalShow') 
     
-  } else {
-    sessionStorage.setItem("totalCost", cartItems[dt.id].price);
-  }
 
-formSend()
+    document.querySelector('#modalClose').addEventListener('click', () => { 
+      modal.classList.remove('modalShow')
+   })
+  
+  })
+  
 }
 
 
@@ -143,6 +100,71 @@ const message = (inputNombre, inputEmail) => {
 }
 
 
+const loadhtml = () => {
+  let cartItems =  JSON.parse(sessionStorage.getItem('productsInCart'));
+  let cartCost = parseInt(sessionStorage.getItem("totalCost"))
+
+  //Hace aparecer a los productos seleccionados en el carrito.
+  if (cartItems && carScreen) {
+    carScreen.innerHTML = ` 
+                              <h2>Agregue productos aquí...</h2>
+                              <div class="checkout-class">
+                                <button id="s" style="border: none; cursor: pointer">
+                                  <h3 style="color: rgb(243, 237, 237)">Ir al checkout</h3>
+                                </button>
+                              </div>
+                              <h3 id="total" style="color: black">Total: $0</h3>
+                              <hr />
+                          `
+
+    Object.values(cartItems).map(item => {
+      
+      carScreen.innerHTML +=  `
+                                <div class = "carrito-div">
+                                  <img class= "carrito-img" src="./assets/images/products/${item.id}.jpg" alt="">
+                                  <p class = "carrito-p">${item.name}
+                                    <br />
+                                    $${item.price}
+                                    x${item.inCart}
+                                    <br />
+                                    <span class = "carrito-price">$${item.inCart * item.price}<span>       
+                                    <br />
+                                  <p>                                           
+                                  <button><i id = "${item.price}" class="fas fa-times-circle fa-2x removeIcon"></i></button>              
+                                </div>
+                                `
+                                
+      document.querySelector('.checkout-class').style.display = "block" 
+      
+      //Dibujamos el total.
+      document.querySelector('#total').textContent = `Total: $${ cartCost  }`   //Pintamos el total en el carrito y en el modal del checkout.                       
+      document.querySelector('#formTotal').textContent = `Total: $${ cartCost  }` 
+                                
+    })
+
+  }
+}
+
+
+//Función que dibuja el total.
+const totalCalc = (dt) => { 
+  let cartItems = JSON.parse(sessionStorage.getItem('productsInCart'));
+  let cart = sessionStorage.getItem("totalCost");
+
+  if(cart != null) {
+    
+    cart = parseInt(cart);
+    sessionStorage.setItem("totalCost", cart + cartItems[dt.id].price);
+    
+  } else {
+    sessionStorage.setItem("totalCost", cartItems[dt.id].price);
+  }
+
+formSend()
+}
+
+
+//Guardamos los artículos agregados al storage.
 const cartStorage = (dt) => {
   let cartItems = JSON.parse(sessionStorage.getItem('productsInCart'))
         
@@ -165,6 +187,7 @@ const cartStorage = (dt) => {
 }
 
 
+//Función para eliminar artículos del carrito.
 const removeItem = (dt) => {
 
   carScreen.addEventListener('click', (e) => {
@@ -179,7 +202,8 @@ const removeItem = (dt) => {
     if(e.target.id == dt.price) {
       
       for ( let i = 0; i < carrito.length; i++) {
-        
+
+        //Detectamos que el id del target sea igual al precio del array del carrito y eliminamos ese precio.
         if (e.target.id == carrito[i]  ) {
           carrito.splice(i , 1)
           
@@ -187,7 +211,7 @@ const removeItem = (dt) => {
           let productNumbers = parseInt(sessionStorage.getItem("cart"));
           counter.textContent = productNumbers 
 
-          let total = carrito.reduce((a, b) => a + b, 0)
+          let total = carrito.reduce((a, b) => a + b, 0) //Calculamos de vuelta el total despues de eliminar un producto.
           
           sessionStorage.setItem('totalCost', total)
           let cartCost = JSON.parse(sessionStorage.getItem('totalCost'))
@@ -207,33 +231,14 @@ const removeItem = (dt) => {
       sessionStorage.setItem('productsInCart', JSON.stringify(cartItems))
 
     }
-    carScreen.removeChild(element)
+    carScreen.removeChild(element) //Finalmente desaparecemos el producto.
 
   })
 
 }
- 
-
-//Function  que muestra el modal.
-const modalCar = () => {
-  
-  document.querySelector('.checkout-class').addEventListener ('click', (e) => {
-  
-    
-      carScreen.classList.remove('carShow');  //Cerramos el carrito al abrir el modal.
-      modal.classList.add('modalShow') 
-    
-
-    document.querySelector('#modalClose').addEventListener('click', () => { 
-      modal.classList.remove('modalShow')
-   })
-  
-  })
-  
-}
 
 
-const addCartFunction = (dt) => {
+const addCartFunction = () => {
   
   let productNumbers = parseInt(sessionStorage.getItem("cart"));  //Almacenamos el valor del storage. 
 
@@ -246,15 +251,6 @@ const addCartFunction = (dt) => {
   }
 }
   
-const loadCart = (dt) => {  //Al recargar la pagina, sigue el valor del carrito con el mismo valor del storage.
-  let productNumbers = parseInt(sessionStorage.getItem("cart"));
-
-  if(productNumbers ) {
-  counter.textContent = productNumbers;
-  }
-  
-}
-
 
 //Función que restan el stock del producto.    
 const stockSub = (dt) => dt.stock -= 1; 
@@ -294,6 +290,4 @@ const buyEvent = (dt) => {
   export {
     showCar, 
     buyEvent,
-    loadCart,
-    loadhtml
   }
