@@ -23,25 +23,6 @@ const create = (dt) => {
 }
 
 
-//Función de búsqueda
-const finder = () => {
-
-  document.querySelector('#input').addEventListener('keyup', (e) => {      
-    
-    //Si la palabra/letra del input no coincide con el inner del producto, lo desaparece.
-    document.querySelectorAll('.store__products--item').forEach(el =>  
-
-      (el.textContent.toLowerCase().includes(e.target.value.toLowerCase())) 
-      ? el.setAttribute("style", "visibility:visible; transform: scale(1); transition: 0.5s;")
-      : el.setAttribute("style", "visibility:hidden; transform: scale(0); order:1; transition: 0.5s;") 
-
-      ) 
-
-  })
-  
-}
-
-
 //Crear un nuevo producto.
 const getALL = async () => {
   const URLJSON  = "https://my-json-server.typicode.com/nicojoaquin/fakeAPI/articulos"
@@ -96,7 +77,6 @@ const getALL = async () => {
 
 document.addEventListener('DOMContentLoaded', getALL)
 showCar();
-finder()
 
 window.onbeforeunload = (e) => {
   sessionStorage.clear()

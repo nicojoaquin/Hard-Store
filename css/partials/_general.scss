@@ -116,6 +116,12 @@
 .buscador {
   display: flex;
 }
+.buscador i {
+  display: none;
+}
+.lupa {
+  display: none;
+}
 #input {
   border-radius: 10px;
   padding: 1rem;
@@ -250,13 +256,6 @@
 .nav__btn {
   display: flex;
   justify-content: center;
-}
-.products {
-  color: rgb(12, 12, 12);
-  background-color: rgba(252, 246, 246, 0.562);
-  width: 200px;
-  border-radius: 10px;
-  font-weight: bolder;
 }
 .store__links {
   list-style: none;

@@ -200,7 +200,7 @@ const removeItem = (dt) => {
       }
 
     if(e.target.id == dt.price) {
-      
+  
       for ( let i = 0; i < carrito.length; i++) {
 
         //Detectamos que el id del target sea igual al precio del array del carrito y eliminamos ese precio.
@@ -224,10 +224,9 @@ const removeItem = (dt) => {
           document.querySelector('.checkout-class').style.display = "none" 
         }
 
-      }
-
+      }      
       cartItems[dt.id].inCart = 0
-      delete cartItems[dt.id]
+      delete cartItems[dt.id]   
       sessionStorage.setItem('productsInCart', JSON.stringify(cartItems))
 
     }
@@ -252,8 +251,18 @@ const addCartFunction = () => {
 }
   
 
-//Función que restan el stock del producto.    
-const stockSub = (dt) => dt.stock -= 1; 
+//Función que restan el stock del producto.
+    
+const stockSub = (dt) => {
+  let cartItems =  JSON.parse(sessionStorage.getItem('productsInCart'));
+
+    cartItems = {
+        ...cartItems,
+        [dt.id]: dt
+      }
+  cartItems[dt.id].stock -= 1
+  sessionStorage.setItem('productsInCart', JSON.stringify(cartItems))
+}; 
 
 
 //Agrega al carrito al hacer click.
@@ -268,13 +277,13 @@ const buyEvent = (dt) => {
         sessionStorage.setItem('carrito', JSON.stringify(carrito))
         
         addAlert(dt.name);
+        stockSub(dt)  
         addCartFunction(dt) 
         cartStorage(dt)
         removeItem(dt)
         totalCalc(dt)
         loadhtml(dt)
         modalCar()
-        stockSub(dt)  
         
       } else {
         cantAlert();

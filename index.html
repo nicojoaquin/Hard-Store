@@ -79,8 +79,13 @@
 
         <div class="finder-cart">
           
+          <div class="lupa">
+            <i class="fas fa-search"></i>
+          </div>
+
           <form class="buscador" id="finder">
             <input id="input" placeholder="Buscar..." type="text" />
+            <i id="closeFinder" class="fas fa-times"></i>
           </form>
           
           <div id="car" class="shopCar">
@@ -161,7 +166,7 @@
                 </div>
 
                 <div class="loader-container">  
-                  <img id="dataLoader" class="loader" src="/assets/loader.gif"  alt="loader"> 
+                  <img id="dataLoader" class="loader" src="/assets/contact.gif"  alt="loader"> 
                 </div>
                           
               </fieldset>
@@ -204,7 +209,6 @@
       </div>
       <section class="store">
         <div class="nav__btn">
-          <h2 class="products">Productos</h2>
           <div id="nav__hamburger" class="nav_hamburger">
             <i id="ham" class="uil uil-bars"></i>
           </div>
@@ -273,9 +277,85 @@
       </section>
       <section
         id="contact"
-        class="contactUs wow animate__animated animate__slideInUp"
+        class="contactUs"
       >
-        <div class="contact-container"></div>
+        <div class="contact-container">
+          <form class="formContact" id="contact" method="POST" action="https://formsubmit.co/nicojoaquin1998@gmail.com">
+            <fieldset>
+              <legend class="legend">Informacion de contacto</legend>
+              <hr>
+              <br>
+              <br>
+              <label for="nombre">Nombre</label>
+              <br>
+              <input
+                class="contact__input"
+                placeholder="Ingrese su nombre"
+                type="text"
+                id="nombre"
+                name="Nombre"
+                maxlength="20"
+                required
+              />
+              <br />
+              <br />
+              <label for="apellido">Apellido</label>
+              <br>
+              <input
+                class="contact__input"
+                placeholder="Ingrese su apellido"
+                type="text"
+                id="apellido"
+                name="Apellido"
+                maxlength="20"
+                required
+                />
+                <br />
+                <br />
+              <h5>Sexo</h5>
+              <input class="radio" type="radio" value="Masculino" name="Sexo" required />
+              <label for="Masculino">Masculino</label>
+              <br />
+              <input class="radio" type="radio" value="Femenino" name="Sexo" required />
+              <label for="Femenino">Femenino</label>
+              <br>
+              <br>
+              <label for="email">Email</label>
+              <br>
+              <input
+                class="contact__input"
+                type="email"
+                id="email"
+                name="Email"
+                placeholder="nombre@ejemplo.com"
+                maxlength="30"
+                required
+              />
+              <br />
+              <br>
+              <label for="pais">País de recidencia</label>
+              <br />
+              <select class="select" name="País" id="pais">
+                <option value="Argentina">Argentina</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Venezuela">Venezuela</option>
+                <option value="Chile">Chile</option>
+                <option value="Bolivia">Bolivia</option>
+                <option value="Uruguay">Uruguay</option>
+              </select>
+              <br />
+              <br />
+              <label for="recibir">Recibir información diariamente</label>
+              <input class="checkbox" type="checkbox" id="recibir" />
+              <br />
+              <br />
+              <input type="submit" value="Enviar" class="send-form">
+              <div class="loader-container"> 
+                <img id="contactLoader" style="display: none;" src="/assets/contact.gif"  alt="loader"> 
+              </div>
+            </fieldset>
+          </form>
+        </div>
       </section>
     </main>
     <footer>
@@ -305,6 +385,6 @@
     ></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/app.js" type="module"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js" type="module"></script>
   </body>
 </html>

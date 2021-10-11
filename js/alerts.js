@@ -28,6 +28,21 @@ function addAlert(articulo) {
     })
   } 
 
+  function contactAlert() {
+    Swal.fire({
+      title: "Muchas gracias!",
+      html: `Hemos enviado tus datos.`,
+      confirmButtonText: 'Aceptar',
+      confirmButtonColor: 'blue'
+     }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          location.reload()
+        )
+      }
+    })
+  }
+
   export {
-    addAlert, cantAlert
+    addAlert, cantAlert, contactAlert
   }
