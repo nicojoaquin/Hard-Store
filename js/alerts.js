@@ -31,8 +31,11 @@ function addAlert(articulo) {
   function contactAlert() {
     Swal.fire({
       title: "Muchas gracias!",
-      html: `Hemos enviado tus datos.`,
+      text: `Hemos enviado tus datos.`,
       confirmButtonText: 'Aceptar',
+      customClass: {
+        htmlContainer: 'htmlContainer-class'
+    },
       confirmButtonColor: 'blue'
      }).then((result) => {
       if (result.isConfirmed) {
