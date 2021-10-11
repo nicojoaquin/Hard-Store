@@ -8,15 +8,15 @@ Utilizo las siguientes tecnologias:
 
 
 - HTML
-```
-```
+
+
 - CSS
-```
-```
+
+
 - Javascript
-```
-```
+
+
 - jQuery
-```
-```
+
+
 
