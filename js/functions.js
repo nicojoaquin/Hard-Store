@@ -35,6 +35,7 @@ const modalCar = () => {
 
     document.querySelector('#modalClose').addEventListener('click', () => { 
       modal.classList.remove('modalShow')
+      document.body.style.overflowY = "auto"
    })
   
   })
