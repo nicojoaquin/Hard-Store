@@ -167,24 +167,29 @@ formSend()
 
 //Guardamos los artículos agregados al storage.
 const cartStorage = (dt) => {
+  
   let cartItems = JSON.parse(sessionStorage.getItem('productsInCart'))
         
   if(cartItems != null) {
-    if(cartItems[dt.id] == undefined) {
+
       cartItems = {
         ...cartItems,
         [dt.id]: dt
       }
-    }
+    
     cartItems[dt.id].inCart += 1
+
   } else {
+
     dt.inCart = 1
     cartItems = {
       [dt.id]: dt
     }
 
   }
+
   sessionStorage.setItem('productsInCart', JSON.stringify(cartItems))
+
 }
 
 
@@ -279,8 +284,8 @@ const buyEvent = (dt) => {
         
         addAlert(dt.name);
         stockSub(dt)  
-        addCartFunction(dt) 
         cartStorage(dt)
+        addCartFunction(dt) 
         removeItem(dt)
         totalCalc(dt)
         loadhtml(dt)
